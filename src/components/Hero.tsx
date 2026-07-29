@@ -1,7 +1,8 @@
 import { useRef, useState, useLayoutEffect } from "react";
-import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring, useMotionValueEvent } from "framer-motion";
 import HeroVideo from "./HeroVideo";
 import { ArrowRight, ArrowLeft } from "lucide-react";
+
 
 function Hero() {
   const wrapperRef = useRef(null);
@@ -31,7 +32,12 @@ function Hero() {
     offset: ["start start", "end end"],
   });
 
-  const progress = useTransform(scrollYProgress, [0, 0.65, 1], [0, 1, 1]);
+  const rawProgress = useTransform(scrollYProgress, [0, 0.9, 1], [0, 1, 1]);
+  const progress = useSpring(rawProgress, {
+    stiffness: 190,
+    damping: 10,
+    mass: 0.2,
+  });
 
   // flip the moment growth completes
   useMotionValueEvent(progress, "change", (latest) => {
@@ -82,10 +88,10 @@ function Hero() {
                   <button className="flex items-center justify-center rounded-4xl bg-black text-black text-3xl transition-all duration-600 ease-in-out w-0 px-0 opacity-0 ml-0 h-14 group-hover:w-14 group-hover:px-3 group-hover:opacity-100 group-hover:mr-1 group-hover:bg-gray-500 group-hover:text-white overflow-hidden">
                     <ArrowRight className="min-w-max" />
                   </button>
-                  <button className="justify-center px-7 py-2 rounded-4xl text-3xl bg-black text-black font-semibold transition-all duration-600 group-hover:bg-gray-500 group-hover:text-white">
+                  <button className="justify-center px-7 py-2 rounded-4xl text-3xl bg-white text-black font-semibold transition-all duration-600 group-hover:bg-gray-500 group-hover:text-white">
                     View Portfolio
                   </button>
-                  <button className="flex items-center justify-center rounded-4xl text-3xl bg-black text-black font-bold transition-all duration-600 ease-in-out w-14 h-14 px-3 py-2 opacity-100 ml-1 group-hover:w-0 group-hover:px-0 group-hover:opacity-0 group-hover:mr-0 group-hover:bg-gray-500 group-hover:text-white overflow-hidden">
+                  <button className="flex items-center justify-center rounded-4xl text-3xl bg-white text-black font-bold transition-all duration-600 ease-in-out w-14 h-14 px-3 py-2 opacity-100 ml-1 group-hover:w-0 group-hover:px-0 group-hover:opacity-0 group-hover:mr-0 group-hover:bg-gray-500 group-hover:text-white overflow-hidden">
                     <ArrowLeft className="min-w-max" />
                   </button>
                 </div>
@@ -115,7 +121,23 @@ function Hero() {
         </motion.div>
       </div>
 
-      <div className="bg-white w-full h-screen" />
+      <div className="group flex bg-black w-full h-52 text-white mx-auto space-x-5.5 items-center justify-center text-7xl py-35 mt-20 font-bold">
+         <h1>
+          All our projects
+         </h1>
+          <button className="flex items-center justify-center rounded-4xl bg-black text-black text-3xl transition-all duration-600 ease-in-out w-0 px-0 opacity-0 ml-0 h-14 group-hover:w-14 group-hover:px-3 group-hover:opacity-100 group-hover:mr-1 group-hover:bg-gray-500 group-hover:text-white overflow-hidden">
+            <ArrowRight className="min-w-max" />
+          </button>
+          <button className="justify-center px-7 py-2 rounded-4xl text-3xl bg-white text-black font-semibold transition-all duration-600 group-hover:bg-gray-500 group-hover:text-white">
+            Create New
+          </button>
+          <button className="flex items-center justify-center rounded-4xl text-3xl bg-white text-black font-bold transition-all duration-600 ease-in-out w-14 h-14 px-3 py-2 opacity-100 ml-1 group-hover:w-0 group-hover:px-0 group-hover:opacity-0 group-hover:mr-0 group-hover:bg-gray-500 group-hover:text-white overflow-hidden">
+            <ArrowLeft className="min-w-max" />
+          </button> 
+          <h1>
+            are delivered with quality.
+          </h1>
+      </div>
     </>
   );
 }
