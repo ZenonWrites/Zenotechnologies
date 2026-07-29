@@ -1,5 +1,5 @@
 // InteractionContext.tsx
-import { createContext, useContext, useState} from 'react';
+import { createContext, useContext, useState } from 'react';
 import type { ReactNode } from 'react';
 
 interface ComponentState {
@@ -22,15 +22,16 @@ export function InteractionProvider({ children }: { children: ReactNode }) {
   const [registry, setRegistry] = useState<InteractionRegistry>({});
 
   const trackEvent = (componentId: string, eventType: keyof ComponentState, value: boolean) => {
-    setRegistry((prev) => ({
-      ...prev,
-      [componentId]: {
-        isClicked: false, // default template defaults
-        isHovered: false, 
-        ...prev[componentId],
-        [eventType]: value,
-      },
-    }));
+    setRegistry((prev) => {
+      const currentState = prev[componentId] || { isClicked: false, isHovered: false };
+      return {
+        ...prev,
+        [componentId]: {
+          ...currentState,
+          [eventType]: value,
+        },
+      };
+    });
   };
 
   return (
