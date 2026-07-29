@@ -3,20 +3,18 @@ import { motion, useScroll, useTransform, useSpring, useMotionValueEvent } from 
 import HeroVideo from "./HeroVideo";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 
-
 function Hero() {
-  const wrapperRef = useRef(null);
-  const slotRef = useRef(null);
-  const [rect, setRect] = useState(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const slotRef = useRef<HTMLDivElement>(null);
+  const [rect, setRect] = useState<{ top: number; left: number; width: number; height: number } | null>(null);
   const [viewport, setViewport] = useState({ w: 0, h: 0 });
   const [wrapperHeight, setWrapperHeight] = useState(0);
-  const [released, setReleased] = useState(false); // 👈 fixed vs absolute switch
+  const [released, setReleased] = useState(false);
 
   useLayoutEffect(() => {
     const measure = () => {
       if (slotRef.current) {
         const r = slotRef.current.getBoundingClientRect();
-        // plain viewport coords — correct for `fixed`, no conversion needed
         setRect({ top: r.top, left: r.left, width: r.width, height: r.height });
       }
       setViewport({ w: window.innerWidth, h: window.innerHeight });
@@ -39,10 +37,9 @@ function Hero() {
     mass: 0.2,
   });
 
-  // flip the moment growth completes
   useMotionValueEvent(progress, "change", (latest) => {
     if (latest >= 1 && !released) setReleased(true);
-    if (latest < 1 && released) setReleased(false); // scrolling back up
+    if (latest < 1 && released) setReleased(false);
   });
 
   const top    = useTransform(progress, [0, 1], [rect?.top ?? 0, 0]);
@@ -100,8 +97,6 @@ function Hero() {
           </div>
         </div>
 
-        {/* Video lives OUTSIDE the sticky div, directly in the wrapper,
-            so it can switch coordinate systems cleanly */}
         <motion.div
           style={
             released
@@ -123,7 +118,7 @@ function Hero() {
 
       <div className="group flex bg-black w-full h-52 text-white mx-auto space-x-5.5 items-center justify-center text-7xl py-35 mt-20 font-bold">
          <h1>
-          All our projects
+         All our projects
          </h1>
           <button className="flex items-center justify-center rounded-4xl bg-black text-black text-3xl transition-all duration-600 ease-in-out w-0 px-0 opacity-0 ml-0 h-14 group-hover:w-14 group-hover:px-3 group-hover:opacity-100 group-hover:mr-1 group-hover:bg-gray-500 group-hover:text-white overflow-hidden">
             <ArrowRight className="min-w-max" />
