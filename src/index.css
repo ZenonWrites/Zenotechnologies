@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@theme {
+  /* You can define custom theme variables here if needed */
+  --font-sans: 'SF Pro Display', 'Onest-VariableFont_wght', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Base styles copied from the original HTML */
+@layer base {
+  body {
+    transition: opacity ease-in 0.2s;
+  }
+}
