@@ -10,9 +10,13 @@ function Hero() {
   const [viewport, setViewport] = useState({ w: 0, h: 0 });
   const [wrapperHeight, setWrapperHeight] = useState(0);
   const [released, setReleased] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useLayoutEffect(() => {
     const measure = () => {
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+
       if (slotRef.current) {
         const r = slotRef.current.getBoundingClientRect();
         setRect({ top: r.top, left: r.left, width: r.width, height: r.height });
@@ -48,6 +52,56 @@ function Hero() {
   const height = useTransform(progress, [0, 1], [rect?.height ?? 0, viewport.h]);
   const radius = useTransform(progress, [0, 1], [16, 0]);
 
+  // ————————————————————————————————————————————————
+  // MOBILE: simple stacked layout, no scroll-jacking.
+  // Scroll-driven fixed/absolute positioning is unreliable on mobile
+  // (address bar resize, touch-scroll momentum), so mobile gets a
+  // static hero instead of the grow-on-scroll video effect.
+  // ————————————————————————————————————————————————
+  if (isMobile) {
+    return (
+      <>
+        <div className="w-full bg-black px-5 pt-28 pb-12">
+          <h2 className="text-white font-bold text-5xl sm:text-6xl leading-[0.95]">
+            SAAS. APP.
+            <br />
+            AI. E-COMMERCE.
+          </h2>
+
+          <div className="w-full aspect-video rounded-2xl overflow-hidden mt-8">
+            <HeroVideo />
+          </div>
+
+          <p className="text-white/80 text-base mt-8">
+            We develop online stores, CRM systems, SaaS solutions, and app
+            platforms — integrating AI into processes and business solutions.
+          </p>
+
+          <div className="flex items-center gap-3 mt-6">
+            <button className="px-6 py-3 rounded-full text-base bg-white text-black font-semibold">
+              View Portfolio
+            </button>
+            <button className="flex items-center justify-center rounded-full bg-white text-black w-11 h-11">
+              <ArrowLeft size={18} />
+            </button>
+          </div>
+        </div>
+
+        <div className="w-full bg-black text-white px-5 py-14 text-center">
+          <h1 className="text-2xl sm:text-3xl font-bold leading-snug">
+            All our projects are delivered with quality.
+          </h1>
+          <button className="mt-6 px-6 py-3 rounded-full text-base bg-white text-black font-semibold">
+            Create New
+          </button>
+        </div>
+      </>
+    );
+  }
+
+  // ————————————————————————————————————————————————
+  // DESKTOP: original scroll-grow hero
+  // ————————————————————————————————————————————————
   return (
     <>
       <div ref={wrapperRef} className="relative h-[200vh] bg-black">
