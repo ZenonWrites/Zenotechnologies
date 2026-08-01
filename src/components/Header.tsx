@@ -1,8 +1,17 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useScroll, useMotionValueEvent } from "framer-motion";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import designImage from './assets/z-final.png'
+
+// Every child link inside a given megamenu tab routes to that tab's
+// own parent page — there are no separate sub-pages per item.
+const routeFor: Record<string, string> = {
+  portfolio: "/portfolio",
+  services: "/services",
+  technology: "/technology",
+};
 
 function Header() {
 
@@ -20,27 +29,33 @@ function Header() {
     }
   });
 
+  const closeAll = () => {
+    setActiveTab(null);
+    setIsMobileMenuOpen(false);
+    setMobileAccordion(null);
+  };
+
   const tabContent = {
     portfolio: (
       <div className="grid grid-cols-3 gap-y-16 gap-x-12 p-16 w-full h-full content-start overflow-y-auto">
         <div className="flex flex-col gap-12">
-          <a href="#" className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase">All Projects</a>
-          <a href="#" className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase">Real Estate</a>
-          <a href="#" className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase">Online Store</a>
-          <a href="#" className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase">Manufacturers</a>
-          <a href="#" className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase">Entertainment/Leisure</a>
+          <Link to={routeFor.portfolio} onClick={closeAll} className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase">All Projects</Link>
+          <Link to={routeFor.portfolio} onClick={closeAll} className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase">Real Estate</Link>
+          <Link to={routeFor.portfolio} onClick={closeAll} className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase">Online Store</Link>
+          <Link to={routeFor.portfolio} onClick={closeAll} className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase">Manufacturers</Link>
+          <Link to={routeFor.portfolio} onClick={closeAll} className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase">Entertainment/Leisure</Link>
         </div>
         <div className="flex flex-col gap-12">
-          <a href="#" className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase">New Projects</a>
-          <a href="#" className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase">Marketing / Corporate</a>
-          <a href="#" className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase">Food Delivery</a>
-          <a href="#" className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase">Branding</a>
+          <Link to={routeFor.portfolio} onClick={closeAll} className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase">New Projects</Link>
+          <Link to={routeFor.portfolio} onClick={closeAll} className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase">Marketing / Corporate</Link>
+          <Link to={routeFor.portfolio} onClick={closeAll} className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase">Food Delivery</Link>
+          <Link to={routeFor.portfolio} onClick={closeAll} className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase">Branding</Link>
         </div>
         <div className="flex flex-col gap-12">
-          <a href="#" className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase">Creative</a>
-          <a href="#" className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase">Landing Page</a>
-          <a href="#" className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase">Dentistry</a>
-          <a href="#" className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase">Web Solution</a>
+          <Link to={routeFor.portfolio} onClick={closeAll} className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase">Creative</Link>
+          <Link to={routeFor.portfolio} onClick={closeAll} className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase">Landing Page</Link>
+          <Link to={routeFor.portfolio} onClick={closeAll} className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase">Dentistry</Link>
+          <Link to={routeFor.portfolio} onClick={closeAll} className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase">Web Solution</Link>
         </div>
       </div>
     ),
@@ -48,37 +63,37 @@ function Header() {
       <div className="grid grid-cols-3 gap-x-12 p-16 w-full h-full content-start overflow-y-auto">
         <div className="flex flex-col">
           <div className="mb-16">
-            <a href="#" className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase mb-8 block">Website Development</a>
+            <Link to={routeFor.services} onClick={closeAll} className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase mb-8 block">Website Development</Link>
             <ul className="flex flex-col gap-6">
-              <li><a href="#" className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Landing page</a></li>
-              <li><a href="#" className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> E-commerce Website Development</a></li>
+              <li><Link to={routeFor.services} onClick={closeAll} className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Landing page</Link></li>
+              <li><Link to={routeFor.services} onClick={closeAll} className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> E-commerce Website Development</Link></li>
             </ul>
           </div>
           <div className="flex flex-col gap-12">
-            <a href="#" className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase">CRM System</a>
-            <a href="#" className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase">Website Support</a>
-            <a href="#" className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase leading-relaxed">Search Engine<br />Optimisation</a>
+            <Link to={routeFor.services} onClick={closeAll} className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase">CRM System</Link>
+            <Link to={routeFor.services} onClick={closeAll} className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase">Website Support</Link>
+            <Link to={routeFor.services} onClick={closeAll} className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase leading-relaxed">Search Engine<br />Optimisation</Link>
           </div>
         </div>
 
         <div className="flex flex-col">
           <div>
-            <a href="#" className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase mb-8 block">Web Design</a>
+            <Link to={routeFor.services} onClick={closeAll} className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase mb-8 block">Web Design</Link>
             <ul className="flex flex-col gap-6">
-              <li><a href="#" className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> UI/UX Design</a></li>
-              <li><a href="#" className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Redesign</a></li>
-              <li><a href="#" className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Logo</a></li>
-              <li><a href="#" className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> E-commerce Design</a></li>
+              <li><Link to={routeFor.services} onClick={closeAll} className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> UI/UX Design</Link></li>
+              <li><Link to={routeFor.services} onClick={closeAll} className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Redesign</Link></li>
+              <li><Link to={routeFor.services} onClick={closeAll} className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Logo</Link></li>
+              <li><Link to={routeFor.services} onClick={closeAll} className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> E-commerce Design</Link></li>
             </ul>
           </div>
         </div>
 
         <div className="flex flex-col">
           <div>
-            <a href="#" className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase mb-8 block leading-relaxed">Mobile Application<br />Development</a>
+            <Link to={routeFor.services} onClick={closeAll} className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase mb-8 block leading-relaxed">Mobile Application<br />Development</Link>
             <ul className="flex flex-col gap-6">
-              <li><a href="#" className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Android Apps</a></li>
-              <li><a href="#" className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> iOS Apps</a></li>
+              <li><Link to={routeFor.services} onClick={closeAll} className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Android Apps</Link></li>
+              <li><Link to={routeFor.services} onClick={closeAll} className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> iOS Apps</Link></li>
             </ul>
           </div>
         </div>
@@ -87,53 +102,56 @@ function Header() {
     technology: (
       <div className="grid grid-cols-3 gap-y-10 gap-x-12 p-12 w-full h-full content-start">
         <div>
-          <h3 className="text-[18px] tracking-wide text-gray-900 uppercase mb-8 block">Technology Stack</h3>
+          <Link to={routeFor.technology} onClick={closeAll} className="text-[18px] tracking-wide text-gray-900 uppercase mb-8 block hover:text-blue-600">Technology Stack</Link>
           <ul className="flex flex-col gap-6">
-            <li><a href="#" className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Simple</a></li>
-            <li><a href="#" className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Middle</a></li>
-            <li><a href="#" className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Enterprise</a></li>
+            <li><Link to={routeFor.technology} onClick={closeAll} className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Simple</Link></li>
+            <li><Link to={routeFor.technology} onClick={closeAll} className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Middle</Link></li>
+            <li><Link to={routeFor.technology} onClick={closeAll} className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Enterprise</Link></li>
           </ul>
         </div>
         <div>
-          <h3 className="text-[18px] tracking-wide text-gray-900 uppercase mb-8 block">Digital Design</h3>
+          <Link to={routeFor.technology} onClick={closeAll} className="text-[18px] tracking-wide text-gray-900 uppercase mb-8 block hover:text-blue-600">Digital Design</Link>
           <ul className="flex flex-col gap-6">
-            <li><a href="#" className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Figma</a></li>
-            <li><a href="#" className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Photoshop</a></li>
-            <li><a href="#" className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Illustrator</a></li>
-            <li><a href="#" className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Framer</a></li>
+            <li><Link to={routeFor.technology} onClick={closeAll} className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Figma</Link></li>
+            <li><Link to={routeFor.technology} onClick={closeAll} className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Photoshop</Link></li>
+            <li><Link to={routeFor.technology} onClick={closeAll} className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Illustrator</Link></li>
+            <li><Link to={routeFor.technology} onClick={closeAll} className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Framer</Link></li>
           </ul>
         </div>
         <div>
-          <h3 className="text-[18px] tracking-wide text-gray-900 uppercase mb-8 block">Frontend</h3>
+          <Link to={routeFor.technology} onClick={closeAll} className="text-[18px] tracking-wide text-gray-900 uppercase mb-8 block hover:text-blue-600">Frontend</Link>
           <ul className="flex flex-col gap-6 mb-8">
-            <li><a href="#" className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> React</a></li>
-            <li><a href="#" className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Angular</a></li>
-            <li><a href="#" className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Vue.js</a></li>
-            <li><a href="#" className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Flutter</a></li>
+            <li><Link to={routeFor.technology} onClick={closeAll} className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> React</Link></li>
+            <li><Link to={routeFor.technology} onClick={closeAll} className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Angular</Link></li>
+            <li><Link to={routeFor.technology} onClick={closeAll} className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Vue.js</Link></li>
+            <li><Link to={routeFor.technology} onClick={closeAll} className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Flutter</Link></li>
           </ul>
+          <Link to={routeFor.technology} onClick={closeAll} className="inline-flex bg-[#e2e4e9] text-gray-800 text-[15px] font-medium px-5 py-2 rounded-full">6+ technologies</Link>
         </div>
         <div>
-          <h3 className="text-[18px] tracking-wide text-gray-900 uppercase mb-8 block">Backend</h3>
+          <Link to={routeFor.technology} onClick={closeAll} className="text-[18px] tracking-wide text-gray-900 uppercase mb-8 block hover:text-blue-600">Backend</Link>
           <ul className="flex flex-col gap-6 mb-8">
-            <li><a href="#" className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Python</a></li>
-            <li><a href="#" className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Node</a></li>
-            <li><a href="#" className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Laravel</a></li>
-            <li><a href="#" className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> PHP</a></li>
+            <li><Link to={routeFor.technology} onClick={closeAll} className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Python</Link></li>
+            <li><Link to={routeFor.technology} onClick={closeAll} className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Node</Link></li>
+            <li><Link to={routeFor.technology} onClick={closeAll} className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Laravel</Link></li>
+            <li><Link to={routeFor.technology} onClick={closeAll} className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> PHP</Link></li>
           </ul>
+          <Link to={routeFor.technology} onClick={closeAll} className="inline-flex bg-[#e2e4e9] text-gray-800 text-[15px] font-medium px-5 py-2 rounded-full">6+ technologies</Link>
         </div>
         <div>
-          <h3 className="text-[18px] tracking-wide text-gray-900 uppercase mb-8 block">Devops</h3>
+          <Link to={routeFor.technology} onClick={closeAll} className="text-[18px] tracking-wide text-gray-900 uppercase mb-8 block hover:text-blue-600">Devops</Link>
           <ul className="flex flex-col gap-6 mb-8">
-            <li><a href="#" className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> AWS</a></li>
-            <li><a href="#" className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Firebase</a></li>
-            <li><a href="#" className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> GCP</a></li>
-            <li><a href="#" className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Azure</a></li>
+            <li><Link to={routeFor.technology} onClick={closeAll} className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> AWS</Link></li>
+            <li><Link to={routeFor.technology} onClick={closeAll} className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Firebase</Link></li>
+            <li><Link to={routeFor.technology} onClick={closeAll} className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> GCP</Link></li>
+            <li><Link to={routeFor.technology} onClick={closeAll} className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Azure</Link></li>
           </ul>
+          <Link to={routeFor.technology} onClick={closeAll} className="inline-flex bg-[#e2e4e9] text-gray-800 text-[15px] font-medium px-5 py-2 rounded-full">6+ technologies</Link>
         </div>
         <div className="flex flex-col gap-12">
-          <a href="#" className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase">Database</a>
-          <a href="#" className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase">Cloud</a>
-          <a href="#" className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase">Mobile Apps</a>
+          <Link to={routeFor.technology} onClick={closeAll} className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase">Database</Link>
+          <Link to={routeFor.technology} onClick={closeAll} className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase">Cloud</Link>
+          <Link to={routeFor.technology} onClick={closeAll} className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase">Mobile Apps</Link>
         </div>
       </div>
     ),
@@ -144,11 +162,6 @@ function Header() {
     portfolio: ["All Projects", "Real Estate", "Online Store", "Manufacturers", "New Projects", "Marketing / Corporate", "Branding"],
     services: ["Website Development", "Web Design", "CRM System", "Mobile Application Development", "Website Support"],
     technology: ["Technology Stack", "Frontend", "Backend", "Devops", "Cloud", "Mobile Apps"],
-  };
-
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
-    setMobileAccordion(null);
   };
 
   return (
@@ -164,40 +177,43 @@ function Header() {
           }
       `}>
         {/* Logo Area */}
-        <a href="/" className="font-bold text-xl md:text-2xl tracking-tighter text-white">
+        <Link to="/" className="font-bold text-xl md:text-2xl tracking-tighter text-white">
           ZenoTech<span className="text-blue-500">.</span>
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-16 text-xl font-medium text-gray-200">
-          <motion.a
+          <Link
+            to={routeFor.portfolio}
             onMouseEnter={() => setActiveTab('portfolio')}
-            href="#"
+            onClick={closeAll}
             className={`hover:text-blue-500 transition-all duration-800 ease-in-out
               ${isScrolled ? "px-0" : "px-2"}
               `}>
             Portfolio
-          </motion.a>
+          </Link>
 
-          <motion.a
+          <Link
+            to={routeFor.services}
             onMouseEnter={() => setActiveTab('services')}
-            href="#"
+            onClick={closeAll}
             className={`hover:text-blue-500 transition-all duration-800 ease-in-out
               ${isScrolled ? "px-0" : "px-2"}
               `}>
             Services
-          </motion.a>
+          </Link>
 
-          <motion.a
+          <Link
+            to={routeFor.technology}
             onMouseEnter={() => setActiveTab('technology')}
-            href="#"
+            onClick={closeAll}
             className={`hover:text-blue-500 transition-all duration-800 ease-in-out
               ${isScrolled ? "px-0" : "px-2"}
               `}>
             Technologies
-          </motion.a>
+          </Link>
 
-          <motion.a onMouseEnter={() => setActiveTab(null)} href="#" className={`hover:text-blue-500 transition-all duration-800 ease-in-out ${isScrolled ? "px-0" : "px-2"} `}>About</motion.a>
+          <Link to="/about" onMouseEnter={() => setActiveTab(null)} className={`hover:text-blue-500 transition-all duration-800 ease-in-out ${isScrolled ? "px-0" : "px-2"} `}>About</Link>
 
         </nav>
 
@@ -259,15 +275,15 @@ function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[60] bg-black md:hidden flex flex-col overflow-y-auto"
+            className="fixed inset-0 z-60 bg-black md:hidden flex flex-col overflow-y-auto"
           >
             {/* Drawer header */}
             <div className="flex justify-between items-center px-6 py-5 border-b border-white/10">
-              <a href="/" className="font-bold text-xl tracking-tighter text-white">
+              <Link to="/" onClick={closeAll} className="font-bold text-xl tracking-tighter text-white">
                 ZenoTech<span className="text-blue-500">.</span>
-              </a>
+              </Link>
               <button
-                onClick={closeMobileMenu}
+                onClick={closeAll}
                 aria-label="Close menu"
                 className="text-white p-2"
               >
@@ -275,37 +291,49 @@ function Header() {
               </button>
             </div>
 
-            {/* Drawer nav — accordion style for the three tab groups */}
+            {/* Drawer nav — accordion style for the three tab groups.
+                Tapping the label navigates straight to the parent page;
+                tapping the arrow just expands/collapses the sub-list. */}
             <nav className="flex flex-col px-6 py-8 gap-2">
               {(["portfolio", "services", "technology"] as const).map((tab) => {
                 const isOpen = mobileAccordion === tab;
                 return (
                   <div key={tab} className="border-b border-white/10">
-                    <button
-                      onClick={() => setMobileAccordion(isOpen ? null : tab)}
-                      className="w-full flex items-center justify-between py-5 text-left"
-                    >
-                      <span className="text-white text-2xl font-medium capitalize">{tab}</span>
-                      <span
-                        className={`text-white text-xl transition-transform duration-300 ${isOpen ? "rotate-180" : ""
-                          }`}
+                    <div className="w-full flex items-center justify-between py-5">
+                      <Link
+                        to={routeFor[tab]}
+                        onClick={closeAll}
+                        className="text-white text-2xl font-medium capitalize"
                       >
-                        ↓
-                      </span>
-                    </button>
+                        {tab}
+                      </Link>
+                      <button
+                        onClick={() => setMobileAccordion(isOpen ? null : tab)}
+                        aria-label={`Toggle ${tab} submenu`}
+                        className="p-2 -mr-2"
+                      >
+                        <span
+                          className={`text-white text-xl inline-block transition-transform duration-300 ${isOpen ? "rotate-180" : ""
+                            }`}
+                        >
+                          ↓
+                        </span>
+                      </button>
+                    </div>
                     <div
                       className={`grid transition-all duration-300 ease-in-out ${isOpen ? "grid-rows-[1fr] opacity-100 pb-5" : "grid-rows-[0fr] opacity-0"
                         }`}
                     >
                       <div className="overflow-hidden flex flex-col gap-4 pl-2">
                         {mobileLinks[tab].map((link) => (
-                          <a
+                          <Link
                             key={link}
-                            href="#"
+                            to={routeFor[tab]}
+                            onClick={closeAll}
                             className="text-white/70 text-lg hover:text-blue-400 transition-colors"
                           >
                             {link}
-                          </a>
+                          </Link>
                         ))}
                       </div>
                     </div>
@@ -313,12 +341,13 @@ function Header() {
                 );
               })}
 
-              <a
-                href="#"
+              <Link
+                to="/about"
+                onClick={closeAll}
                 className="text-white text-2xl font-medium py-5 border-b border-white/10"
               >
                 About
-              </a>
+              </Link>
             </nav>
 
             {/* Drawer CTA */}

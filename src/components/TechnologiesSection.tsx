@@ -1,7 +1,7 @@
 import type { ComponentType } from "react";
 import { ArrowDownRight, ArrowLeft, Layers } from "lucide-react";
 import AzureIcon from "./AzureIcon";
-import AwsIcon from "./AWSIcon";
+import AwsIcon from "./AwsIcon";
 import {
   SiHtml5,
   SiCss,

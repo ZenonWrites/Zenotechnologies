@@ -1,11 +1,14 @@
 import { ArrowLeft } from "lucide-react";
+import Vid from "./assets/zeno-tech-promo.mp4"
 
 export default function ClosingCTASection() {
   return (
     <section className="w-full bg-black py-16 sm:py-32 flex flex-col items-center text-center px-6">
       <h2 className="text-white font-bold text-3xl sm:text-5xl md:text-7xl leading-tight max-w-5xl">
         LET&rsquo;S MOVE{" "}
-        <span className="hidden sm:inline-block align-middle w-32 h-20 md:w-40 md:h-24 rounded-xl overflow-hidden bg-gradient-to-br from-emerald-900 to-slate-900 mx-2 -translate-y-2" />
+        <span className="hidden sm:inline-block align-middle w-32 h-20 md:w-40 md:h-24 rounded-xl overflow-hidden bg-linear-to-br from-emerald-900 to-slate-900 mx-2 -translate-y-2" >
+          <video src={Vid} autoPlay muted/>
+        </span>
         <br className="hidden sm:block" />
         THE WORLD TOGETHER
       </h2>
