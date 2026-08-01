@@ -1,22 +1,78 @@
-import { ArrowDownRight, ArrowLeft } from "lucide-react";
+import type { ComponentType } from "react";
+import { ArrowDownRight, ArrowLeft, Layers } from "lucide-react";
+import AzureIcon from "./AzureIcon";
+import AwsIcon from "./AWSIcon";
+import {
+  SiHtml5,
+  SiCss,
+  SiJavascript,
+  SiPhp,
+  SiMysql,
+  SiWordpress,
+  SiShopify,
+  SiPython,
+  SiReact,
+  SiNodedotjs,
+  SiMongodb,
+  SiDjango,
+  SiFastapi,
+  SiLaravel,
+  SiFlutter,
+  SiTypescript,
+  SiAngular,
+  SiPostgresql,
+} from "react-icons/si";
+
+// Covers react-icons components and the custom AzureIcon / AwsIcon SVG components.
+type IconComponent = ComponentType<{ className?: string }>;
+
+interface TechItem {
+  label: string;
+  Icon: IconComponent;
+}
 
 interface TechColumn {
   label: string;
-  items: string[];
+  items: TechItem[];
 }
 
 const columns: TechColumn[] = [
   {
     label: "SINGLE",
-    items: ["HTML", "CSS", "WordPress", "Shopify"],
+    items: [
+      { label: "HTML", Icon: SiHtml5 },
+      { label: "CSS", Icon: SiCss },
+      { label: "JavaScript", Icon: SiJavascript },
+      { label: "PHP", Icon: SiPhp },
+      { label: "mySQL", Icon: SiMysql },
+      { label: "WordPress", Icon: SiWordpress },
+      { label: "Shopify", Icon: SiShopify },
+    ],
   },
   {
     label: "MIDDLE",
-    items: ["Laravel", "mySQL", "vue", "PHP"],
+    items: [
+      { label: "Python", Icon: SiPython },
+      { label: "React JS", Icon: SiReact },
+      { label: "Node JS", Icon: SiNodedotjs },
+      { label: "MERN Stack", Icon: Layers },
+      { label: "MongoDB", Icon: SiMongodb },
+      { label: "Django", Icon: SiDjango },
+      { label: "FastAPI", Icon: SiFastapi },
+      { label: "Laravel", Icon: SiLaravel },
+      { label: "Flutter", Icon: SiFlutter },
+      { label: "React Native", Icon: SiReact },
+    ],
   },
   {
     label: "ENTERPRISE",
-    items: ["React.js", "Azure", "Python", "Angular", "Node.js"],
+    items: [
+      { label: "TypeScript", Icon: SiTypescript },
+      { label: "Angular", Icon: SiAngular },
+      { label: "Postgre", Icon: SiPostgresql },
+      { label: "MS Azure", Icon: AzureIcon },
+      { label: "AWS", Icon: AwsIcon },
+    ],
   },
 ];
 
@@ -57,16 +113,20 @@ export default function TechnologiesSection() {
                 </span>
                 <ArrowDownRight className="text-white/50" size={20} />
               </div>
+
               <ul className="flex flex-col">
-                {col.items.map((item) => (
+                {col.items.map(({ label, Icon }) => (
                   <li
-                    key={item}
-                    className="flex items-center gap-3 text-white/80 py-3 border-b border-white/10 hover:text-white transition-colors text-sm sm:text-base"
+                    key={label}
+                    className="group relative flex items-center gap-3 text-white/80 py-3 text-sm sm:text-base hover:text-white transition-colors cursor-pointer"
                   >
-                    <span className="w-5 h-5 flex items-center justify-center text-white/60 shrink-0">
-                      •
-                    </span>
-                    {item}
+                    <Icon className="w-5 h-5 shrink-0" />
+                    {label}
+
+                    {/* Base line */}
+                    <span className="absolute left-0 bottom-0 w-full h-px bg-white/10" />
+                    {/* Glow sweep — grows from left to full width on hover */}
+                    <span className="absolute left-0 bottom-0 w-full h-px bg-white origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out" />
                   </li>
                 ))}
               </ul>

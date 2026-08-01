@@ -174,14 +174,14 @@ function Hero() {
          <h1>
          All our projects
          </h1>
-          <button className="flex items-center justify-center rounded-4xl bg-black text-black text-3xl transition-all duration-600 ease-in-out w-0 px-0 opacity-0 ml-0 h-14 group-hover:w-14 group-hover:px-3 group-hover:opacity-100 group-hover:mr-1 group-hover:bg-gray-500 group-hover:text-white overflow-hidden">
-            <ArrowRight className="min-w-max" />
+          <button className="flex items-center mt-2 justify-center rounded-4xl bg-black text-black text-3xl transition-all duration-600 ease-in-out w-0 px-0 opacity-0 ml-0 h-16 group-hover:w-16 group-hover:px-3 group-hover:opacity-100 group-hover:mr-3 group-hover:bg-gray-500 group-hover:text-white overflow-hidden">
+            <ArrowRight className="min-w-max w-10 h-10" />
           </button>
-          <button className="justify-center mt-2 px-7 py-2 rounded-4xl text-3xl bg-white text-black font-semibold transition-all duration-600 group-hover:bg-gray-500 group-hover:text-white">
+          <button className="justify-center mt-2 px-7 py-2 rounded-4xl text-5xl bg-white text-black font-semibold transition-all duration-600 group-hover:bg-gray-500 group-hover:text-white">
             Create New
           </button>
-          <button className="flex items-center mt-2 justify-center rounded-4xl text-3xl bg-white text-black font-bold transition-all duration-600 ease-in-out w-14 h-14 px-3 py-2 opacity-100  group-hover:w-0 group-hover:px-0 group-hover:opacity-0 group-hover:mr-0 group-hover:bg-gray-500 group-hover:text-white overflow-hidden">
-            <ArrowLeft className="min-w-max" />
+          <button className="flex items-center mt-2 -ml-2 mr-2 justify-center rounded-4xl text-4xl bg-white text-black font-bold transition-all duration-600 ease-in-out w-16 h-16 px-3 py-2 opacity-100  group-hover:w-0 group-hover:px-0 group-hover:opacity-0 group-hover:mr-0 group-hover:bg-gray-500 group-hover:text-white overflow-hidden">
+            <ArrowLeft className="min-w-max w-10 h-10" />
           </button> 
           <h1>
             are delivered with quality.
