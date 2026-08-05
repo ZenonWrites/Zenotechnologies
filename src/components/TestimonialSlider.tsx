@@ -31,7 +31,7 @@ export default function TestimonialSlider() {
     <section className="w-full bg-black px-5 sm:px-10 py-12 sm:py-20">
       <div className="grid md:grid-cols-2 gap-8 sm:gap-16 items-start">
         {/* Video thumbnail with play button */}
-        <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-slate-800 to-slate-900">
+        <div className="relative w-full aspect-4/3 rounded-2xl overflow-hidden bg-linear-to-br from-slate-800 to-slate-900">
           <div className="absolute inset-0 flex items-center justify-center">
             <button
               aria-label="Play case study video"

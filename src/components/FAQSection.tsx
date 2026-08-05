@@ -36,7 +36,7 @@ export default function FAQSection() {
     <section className="w-full bg-black px-5 sm:px-10 py-12 sm:py-20">
       <div className="grid md:grid-cols-[1fr_2fr] gap-8 sm:gap-16">
         {/* Left sidebar card */}
-        <div className="bg-white/[0.04] rounded-2xl p-6 sm:p-10 flex flex-col justify-between min-h-[220px] md:min-h-[420px]">
+        <div className="bg-white/4 rounded-2xl p-6 sm:p-10 flex flex-col justify-between min-h-55 md:min-h-105">
           <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-white flex items-center justify-center">
             <span className="text-black font-bold text-lg sm:text-xl">R</span>
           </div>

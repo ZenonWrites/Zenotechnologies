@@ -1,6 +1,5 @@
 import ClosingCTASection from "../ClosingCTASection";
-// import FAQSection from "../FAQSection";
-import Footer from "../Footer";
+import FAQSection from "../FAQSection";
 import Hero from "../Hero";
 import PortfolioCarousel from "../Portfoliocarousel";
 import ServicesSection from "../ServicesSection";
@@ -22,7 +21,7 @@ function HomePage () {
         {/* <TestimonialSlider /> */}
         <TechnologiesSection />
         <ClosingCTASection />
-        {/* <FAQSection /> */}
+        <FAQSection />
         {/* <Footer /> */}
         </div>
      
