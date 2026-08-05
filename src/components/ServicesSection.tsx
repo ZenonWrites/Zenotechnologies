@@ -166,11 +166,11 @@ export default function ServicesSection() {
                 <div className="flex items-center gap-3 sm:gap-8 min-w-0">
                   <ArrowRight
                     className={`text-white shrink-0 transition-transform duration-300 ease-in-out ${arrowRotation}`}
-                    size={20}
+                    size={45}
                     strokeWidth={1.5}
                   />
                   <span
-                    className={`text-lg sm:text-4xl md:text-5xl font-medium transition-colors duration-300 truncate sm:whitespace-normal ${
+                    className={`text-lg sm:text-4xl md:text-5xl font-medium transition-colors duration-300 truncate sm:whitespace-normal py-2 ${
                       isOpen || isHovered ? "text-white" : "text-white/40"
                     }`}
                   >
