@@ -126,7 +126,7 @@ function Header() {
             <li><Link to={routeFor.technology} onClick={closeAll} className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Vue.js</Link></li>
             <li><Link to={routeFor.technology} onClick={closeAll} className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Flutter</Link></li>
           </ul>
-          <Link to={routeFor.technology} onClick={closeAll} className="inline-flex bg-[#e2e4e9] text-gray-800 text-[15px] font-medium px-5 py-2 rounded-full">6+ technologies</Link>
+          {/* <Link to={routeFor.technology} onClick={closeAll} className="inline-flex bg-[#e2e4e9] text-gray-800 text-[15px] font-medium px-5 py-2 rounded-full">6+ technologies</Link> */}
         </div>
         <div>
           <Link to={routeFor.technology} onClick={closeAll} className="text-[18px] tracking-wide text-gray-900 uppercase mb-8 block hover:text-blue-600">Backend</Link>
@@ -136,7 +136,7 @@ function Header() {
             <li><Link to={routeFor.technology} onClick={closeAll} className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Laravel</Link></li>
             <li><Link to={routeFor.technology} onClick={closeAll} className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> PHP</Link></li>
           </ul>
-          <Link to={routeFor.technology} onClick={closeAll} className="inline-flex bg-[#e2e4e9] text-gray-800 text-[15px] font-medium px-5 py-2 rounded-full">6+ technologies</Link>
+          {/* <Link to={routeFor.technology} onClick={closeAll} className="inline-flex bg-[#e2e4e9] text-gray-800 text-[15px] font-medium px-5 py-2 rounded-full">6+ technologies</Link> */}
         </div>
         <div>
           <Link to={routeFor.technology} onClick={closeAll} className="text-[18px] tracking-wide text-gray-900 uppercase mb-8 block hover:text-blue-600">Devops</Link>
@@ -146,7 +146,7 @@ function Header() {
             <li><Link to={routeFor.technology} onClick={closeAll} className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> GCP</Link></li>
             <li><Link to={routeFor.technology} onClick={closeAll} className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Azure</Link></li>
           </ul>
-          <Link to={routeFor.technology} onClick={closeAll} className="inline-flex bg-[#e2e4e9] text-gray-800 text-[15px] font-medium px-5 py-2 rounded-full">6+ technologies</Link>
+          {/* <Link to={routeFor.technology} onClick={closeAll} className="inline-flex bg-[#e2e4e9] text-gray-800 text-[15px] font-medium px-5 py-2 rounded-full">6+ technologies</Link> */}
         </div>
         <div className="flex flex-col gap-12">
           <Link to={routeFor.technology} onClick={closeAll} className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase">Database</Link>

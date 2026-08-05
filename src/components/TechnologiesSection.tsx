@@ -1,5 +1,5 @@
 import type { ComponentType } from "react";
-import { ArrowDownRight, ArrowLeft, Layers } from "lucide-react";
+import { ArrowDownRight, ArrowLeft, Layers, ArrowRight } from "lucide-react";
 import AzureIcon from "./AzureIcon";
 import AwsIcon from "./AwsIcon";
 import {
@@ -88,17 +88,20 @@ export default function TechnologiesSection() {
             TECHNOLOGIES
           </h2>
 
-          <div className="mt-8 md:mt-20">
+          <div className="mt-8 md:mt-20 flex flex-col">
             <p className="text-white/50 text-base sm:text-lg max-w-xs">
               A personalized approach to every project — for the best results.
             </p>
-            <div className="group flex items-center mt-5 sm:mt-6 cursor-pointer w-max">
-              <button className="px-5 sm:px-7 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold tracking-wide bg-white text-black transition-colors group-hover:bg-gray-300">
-                MORE TECHNOLOGIES
-              </button>
-              <button className="flex items-center justify-center rounded-full bg-white text-black w-9 h-9 sm:w-11 sm:h-11 ml-2 transition-colors group-hover:bg-gray-300">
-                <ArrowLeft size={16} />
-              </button>
+              <div className="-ml-2 group flex justify-center mx-auto cursor-pointer mt-9  items-center h-15 px-3 py-8 rounded-4xl bg-white group-hover:bg-gray-500 text-black group-hover:text-white">
+                <button className="py-2 flex items-center justify-center rounded-4xl text-3xl transition-all duration-600 ease-in-out w-0 px-0 opacity-0 ml-0 h-14 group-hover:w-14 group-hover:px-3 group-hover:opacity-100 group-hover:mr-1  overflow-hidden">
+                  <ArrowRight size={52} />
+                </button>
+                <button className="justify-center px-3 py-4 rounded-4xl text-3xl font-semibold transition-all duration-600 ">
+                  More Technologies
+                </button>
+                <button className="flex items-center justify-center rounded-4xl text-3xl  font-bold transition-all duration-600 ease-in-out w-14 h-14 px-3 py-2 opacity-100 ml-0 group-hover:w-0 group-hover:px-0 group-hover:opacity-0 group-hover:mr-0  overflow-hidden">
+                  <ArrowLeft size={52} />
+                </button>
             </div>
           </div>
         </div>

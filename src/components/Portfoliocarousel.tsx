@@ -184,17 +184,26 @@ export default function PortfolioCarousel() {
 
       <div className="group flex items-center mt-10 sm:mt-14 cursor-pointer w-max">
         <Link
-          to="/portfolio"
-          className="px-6 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-lg font-semibold bg-white text-black transition-colors group-hover:bg-gray-300"
+          to="/portfolio"          
         >
-          VIEW ALL PROJECTS
+          <div className="group flex mx-auto cursor-pointer mt-9 items-center h-15 px-3 py-10 rounded-4xl bg-white group-hover:bg-gray-500 text-black group-hover:text-white">
+                  <button className="py-2 flex items-center justify-center rounded-4xl text-3xl transition-all duration-600 ease-in-out w-0 px-0 opacity-0 ml-0 h-14 group-hover:w-14 group-hover:px-3 group-hover:opacity-100 group-hover:mr-1  overflow-hidden">
+                    <ArrowRight size={52} />
+                  </button>
+                  <button className="justify-center px-3 py-4 rounded-4xl text-3xl   font-semibold transition-all duration-600 ">
+                    View Portfolio
+                  </button>
+                  <button className="flex items-center justify-center rounded-4xl text-3xl  font-bold transition-all duration-600 ease-in-out w-14 h-14 px-3 py-2 opacity-100 ml-0 group-hover:w-0 group-hover:px-0 group-hover:opacity-0 group-hover:mr-0  overflow-hidden">
+                    <ArrowLeft size={52} />
+                  </button>
+            </div>
         </Link>
-        <Link
+        {/* <Link
           to="/portfolio"
           className="flex items-center justify-center rounded-full bg-white text-black w-10 h-10 sm:w-14 sm:h-14 ml-2 transition-colors group-hover:bg-gray-300"
         >
           <ArrowLeft size={52} />
-        </Link>
+        </Link> */}
       </div>
     </section>
   );

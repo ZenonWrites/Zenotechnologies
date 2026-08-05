@@ -239,12 +239,15 @@ export default function ServicesSection() {
                         ))}
                       </div>
 
-                      <div className="group/btn flex items-center mt-8 sm:mt-10 cursor-pointer w-max">
-                        <button className="px-5 sm:px-7 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold tracking-wide bg-white text-black transition-colors group-hover/btn:bg-gray-300">
-                          VIEW SERVICE DETAILS
+                      <div className="group flex mx-auto cursor-pointer mt-9 items-center h-15">
+                        <button className="flex items-center justify-center rounded-4xl bg-black text-black text-3xl transition-all duration-600 ease-in-out w-0 px-2 py-2 opacity-0 ml-0 h-10 group-hover:w-10 group-hover:px-2 group-hover:opacity-100 group-hover:mr-1 group-hover:bg-gray-500 group-hover:text-white overflow-hidden">
+                          <ArrowRight className="min-w-max" />
                         </button>
-                        <button className="flex items-center justify-center rounded-full bg-white text-black w-9 h-9 sm:w-11 sm:h-11 ml-2 transition-colors group-hover/btn:bg-gray-300">
-                          <ArrowLeft size={16} />
+                        <button className="justify-center px-5 py-1 rounded-4xl text-2xl bg-white text-black font-medium transition-all duration-600 group-hover:bg-gray-500 group-hover:text-white">
+                          View Service Details
+                        </button>
+                        <button className="flex items-center justify-center rounded-4xl text-2xl bg-white text-black font-bold transition-all duration-600 ease-in-out w-10 h-10 px-2 py-2 opacity-100 ml-1 group-hover:w-0 group-hover:px-0 group-hover:opacity-0 group-hover:mr-0 group-hover:bg-gray-500 group-hover:text-white overflow-hidden">
+                          <ArrowLeft className="min-w-max" />
                         </button>
                       </div>
                     </div>
