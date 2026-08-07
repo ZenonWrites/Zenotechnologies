@@ -2,51 +2,86 @@ import { useRef, useState, useLayoutEffect } from "react";
 import { motion, useMotionValue, animate, type PanInfo } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import design from "./assets/design.jpeg"
+import feastly from "./assets/feastly.jpeg"
+import industry from "./assets/industry.jpeg"
+import maison from "./assets/maison.jpeg"
+import jwell from "./assets/jwell-ss.png"
 
 interface Project {
   id: string;
   title: string;
   tags: string[];
   image: string; // placeholder gradient — swap for a real <img> once assets exist
+  link: string;
 }
 
 const projects: Project[] = [
   {
-    id: "wish-flowers",
-    title: "WISH FLOWERS",
-    tags: ["Flower delivery", "UX/UI Design"],
-    image: "bg-gradient-to-br from-pink-300 to-rose-400",
+    id: "jwell-pharma",
+    title: "JWELL PHARMACEUTICALS",
+    tags: ["Landing Website", "UX/UI Design"],
+    image: jwell,
+    link: "https://www.jwellpharma.com/"
   },
   {
-    id: "saved",
-    title: "SAVED",
-    tags: ["Charitable foundation", "UX/UI Design"],
-    image: "bg-gradient-to-br from-amber-200 to-yellow-300",
+    id: "brand-design",
+    title: "DESIGN BRAND STUDIO",
+    tags: ["Promotional", "UX/UI Design"],
+    image: design,
+    link: "https://design-branding.vercel.app/"
   },
   {
-    id: "miromark",
-    title: "MIROMARK",
-    tags: ["Interior solutions", "UX/UI Design"],
-    image: "bg-gradient-to-br from-slate-100 to-slate-300",
+    id: "feastly",
+    title: "FEASTY FOOD DELIVERY",
+    tags: ["Real-time Apps", "Full Stack"],
+    image: feastly,
+    link: "https://feastly-sepia.vercel.app/"
   },
   {
-    id: "dental-plus",
-    title: "DENTAL PLUS",
-    tags: ["Dental clinic", "UX/UI Design"],
-    image: "bg-gradient-to-br from-cyan-200 to-sky-300",
+    id: "industrial-web",
+    title: "INDUSTRIAL MANUFACTURING",
+    tags: ["Promotional", "UX/UI Design"],
+    image: industry,
+    link: "https://industry-website-kappa.vercel.app/"
   },
   {
-    id: "urban-nest",
-    title: "URBAN NEST",
-    tags: ["Real estate", "UX/UI Design"],
-    image: "bg-gradient-to-br from-orange-200 to-amber-300",
+    id: "maison-ore",
+    title: "MAISON-ORE",
+    tags: ["E-Commerce", "Full Stack"],
+    image: maison,
+    link: "https://maison-ore-eight.vercel.app/"
   },
-  {
-    id: "quick-bite",
-    title: "QUICK BITE",
-    tags: ["Food delivery", "UX/UI Design"],
-    image: "bg-gradient-to-br from-lime-200 to-green-300",
-  },
+  // {
+  //   id: "saved",
+  //   title: "SAVED",
+  //   tags: ["Charitable foundation", "UX/UI Design"],
+  //   image: "bg-gradient-to-br from-amber-200 to-yellow-300",
+  // },
+  // {
+  //   id: "miromark",
+  //   title: "MIROMARK",
+  //   tags: ["Interior solutions", "UX/UI Design"],
+  //   image: "bg-gradient-to-br from-slate-100 to-slate-300",
+  // },
+  // {
+  //   id: "dental-plus",
+  //   title: "DENTAL PLUS",
+  //   tags: ["Dental clinic", "UX/UI Design"],
+  //   image: "bg-gradient-to-br from-cyan-200 to-sky-300",
+  // },
+  // {
+  //   id: "urban-nest",
+  //   title: "URBAN NEST",
+  //   tags: ["Real estate", "UX/UI Design"],
+  //   image: "bg-gradient-to-br from-orange-200 to-amber-300",
+  // },
+  // {
+  //   id: "quick-bite",
+  //   title: "QUICK BITE",
+  //   tags: ["Food delivery", "UX/UI Design"],
+  //   image: "bg-gradient-to-br from-lime-200 to-green-300",
+  // },
 ];
 
 const GAP_PX = 24; // matches gap-6
@@ -128,7 +163,7 @@ export default function PortfolioCarousel() {
             {projects.map((project, i) => (
               <Link
                 key={project.id}
-                to="/portfolio"
+                to={project.link}
                 ref={i === 0 ? cardRef : undefined}
                 draggable={false}
                 onClick={(e) => {
@@ -137,9 +172,10 @@ export default function PortfolioCarousel() {
                 className="group flex flex-col shrink-0 select-none w-[75%] xs:w-[60%] sm:w-[42%] lg:w-[28%]"
               >
                 <div className="w-full aspect-square rounded-xl overflow-hidden pointer-events-none">
-                  <div
+                  {/* <div
                     className={`w-full h-full ${project.image} group-hover:scale-105 transition-transform duration-500`}
-                  />
+                  /> */}
+                  <img src={project.image} alt="design image" className="w-full h-full group-hover:scale-105 transition-transform duration-500" />
                 </div>
                 <div className="mt-4 flex items-start justify-between gap-4 pointer-events-none">
                   <h3 className="text-white text-lg sm:text-xl font-bold uppercase">
