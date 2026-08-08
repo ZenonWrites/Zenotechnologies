@@ -171,13 +171,13 @@ export default function PortfolioCarousel() {
                 }}
                 className="group flex flex-col shrink-0 select-none w-[75%] xs:w-[60%] sm:w-[42%] lg:w-[28%]"
               >
-                <div className="w-full aspect-square rounded-xl overflow-hidden pointer-events-none">
+                <div className="w-full  rounded-xl overflow-hidden pointer-events-none">
                   {/* <div
                     className={`w-full h-full ${project.image} group-hover:scale-105 transition-transform duration-500`}
                   /> */}
-                  <img src={project.image} alt="design image" className="w-full h-full group-hover:scale-105 transition-transform duration-500" />
+                  <img src={project.image} alt="design image" className="w-full h-full object-fill group-hover:scale-105 transition-transform duration-500" />
                 </div>
-                <div className="mt-4 flex items-start justify-between gap-4 pointer-events-none">
+                <div className="mt-4 flex flex-wrap items-start justify-between gap-4 pointer-events-none">
                   <h3 className="text-white text-lg sm:text-xl font-bold uppercase">
                     {project.title}
                   </h3>
@@ -204,7 +204,7 @@ export default function PortfolioCarousel() {
           onClick={() => goToIndex(index - 1)}
           disabled={index === 0}
           aria-label="Previous"
-          className="absolute left-2 sm:left-4 top-[42%] -translate-y-1/2 z-20 flex items-center justify-center rounded-full bg-black/50 backdrop-blur-sm border border-white/20 text-white w-11 h-11 sm:w-12 sm:h-12 hover:bg-white hover:text-black transition-colors disabled:opacity-30 disabled:hover:bg-black/50 disabled:hover:text-white"
+          className="absolute left-2 sm:left-4 top-[42%] -translate-y-1/2 z-20 md:flex items-center justify-center rounded-full bg-black/50 backdrop-blur-sm border border-white/20 text-white w-11 h-11 sm:w-12 sm:h-12 hover:bg-white hover:text-black transition-colors disabled:opacity-30 disabled:hover:bg-black/50 disabled:hover:text-white hidden "
         >
           <ArrowLeft size={18} />
         </button>
@@ -212,7 +212,7 @@ export default function PortfolioCarousel() {
           onClick={() => goToIndex(index + 1)}
           disabled={index === maxIndex}
           aria-label="Next"
-          className="absolute right-2 sm:right-4 top-[42%] -translate-y-1/2 z-20 flex items-center justify-center rounded-full bg-black/50 backdrop-blur-sm border border-white/20 text-white w-11 h-11 sm:w-12 sm:h-12 hover:bg-white hover:text-black transition-colors disabled:opacity-30 disabled:hover:bg-black/50 disabled:hover:text-white"
+          className="absolute right-2 sm:right-4 top-[42%] -translate-y-1/2 z-20  hidden md:flex items-center justify-center rounded-full bg-black/50 backdrop-blur-sm border border-white/20 text-white w-11 h-11 sm:w-12 sm:h-12 hover:bg-white hover:text-black transition-colors disabled:opacity-30 disabled:hover:bg-black/50 disabled:hover:text-white"
         >
           <ArrowRight size={18} />
         </button>

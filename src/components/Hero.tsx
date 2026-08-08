@@ -14,8 +14,12 @@ function Hero() {
 
   useLayoutEffect(() => {
     const measure = () => {
-      const mobile = window.innerWidth < 768;
-      setIsMobile(mobile);
+      // Only true phones get the simplified static layout — scroll-jacking
+      // via fixed/absolute positioning is unreliable there (address bar
+      // resize, touch-scroll momentum). Everything from tablet width up,
+      // including iPad landscape, runs the exact same scroll-grow desktop
+      // path below — it just scales down fluidly via vw units.
+      setIsMobile(window.innerWidth < 768);
 
       if (slotRef.current) {
         const r = slotRef.current.getBoundingClientRect();
@@ -53,16 +57,13 @@ function Hero() {
   const radius = useTransform(progress, [0, 1], [16, 0]);
 
   // ————————————————————————————————————————————————
-  // MOBILE: simple stacked layout, no scroll-jacking.
-  // Scroll-driven fixed/absolute positioning is unreliable on mobile
-  // (address bar resize, touch-scroll momentum), so mobile gets a
-  // static hero instead of the grow-on-scroll video effect.
+  // PHONE (<768px): simple stacked layout, no scroll-jacking.
   // ————————————————————————————————————————————————
   if (isMobile) {
     return (
       <>
         <div className="w-full bg-black px-5 pt-28 pb-12">
-          <h2 className="text-white font-bold text-5xl sm:text-6xl leading-[0.95]">
+          <h2 className="text-white font-bold text-5xl sm:text-5xl leading-[0.95] whitespace-nowrap">
             SAAS. APP.
             <br />
             AI. E-COMMERCE.
@@ -100,7 +101,7 @@ function Hero() {
   }
 
   // ————————————————————————————————————————————————
-  // DESKTOP: original scroll-grow hero
+  // DESKTOP (≥1025px): original scroll-grow hero
   // ————————————————————————————————————————————————
   return (
     <>
@@ -108,21 +109,21 @@ function Hero() {
         <div className="sticky top-0 h-screen w-full overflow-hidden">
           <div className="w-full h-screen mx-auto px-10 -my-20 bg-black">
             <div className="flex flex-col h-2/3 mt-15 ml-6 gap-y-10">
-              <div className="flex -mb-20">
+              <div className="flex -mb-[4.1667vw]">
                 <div className="flex w-2/3 h-auto font-bold">
-                  <h2 className="text-[210px] text-white">SAAS.</h2>
-                  <h2 className="text-[210px] text-white">APP.</h2>
+                  <h2 className="text-[10.9375vw] text-white whitespace-nowrap">SAAS.</h2>
+                  <h2 className="text-[10.9375vw] text-white whitespace-nowrap">APP.</h2>
                 </div>
-                <div className="flex w-full -mb-10">
-                  <div className="flex w-full overflow-hidden justify-end items-start -mt-4 mr-20">
-                    <div ref={slotRef} className="w-105 h-55 invisible" />
+                <div className="flex w-full -mb-[2.0833vw]">
+                  <div className="flex w-full overflow-hidden justify-end items-start -mt-[0.8333vw] mr-[4.1667vw]">
+                    <div ref={slotRef} className="w-[21.875vw] aspect-video invisible" />
                   </div>
                 </div>
               </div>
               <div className="flex w-full h-auto">
-                <div className="flex -mt-12 font-bold">
-                  <h2 className="text-[210px] text-white">AI.</h2>
-                  <h2 className="text-[210px] text-white">E-COMMERCE.</h2>
+                <div className="flex -mt-[2.5vw] font-bold">
+                  <h2 className="text-[10.9375vw] text-white">AI.</h2>
+                  <h2 className="text-[10.9375vw] text-white whitespace-nowrap">E-COMMERCE.</h2>
                 </div>
               </div>
             </div>
@@ -170,20 +171,20 @@ function Hero() {
         </motion.div>
       </div>
 
-      <div className="group flex bg-black w-full h-52 text-white mx-auto space-x-5.5 items-center justify-center text-7xl py-35 mt-20 font-bold">
-         <h1>
+      <div className="group flex flex-wrap bg-black w-full text-white mx-auto items-center justify-center gap-x-[1.1vw] gap-y-4 text-center px-6 py-[5vw] mt-[2vw] font-bold">
+         <h1 className="text-[2.75vw] whitespace-nowrap">
          All our projects
          </h1>
-          <button className="flex items-center mt-2 justify-center rounded-4xl bg-black text-black text-3xl transition-all duration-600 ease-in-out w-0 px-0 opacity-0 ml-0 h-16 group-hover:w-16 group-hover:px-3 group-hover:opacity-100 group-hover:mr-3 group-hover:bg-gray-500 group-hover:text-white overflow-hidden">
-            <ArrowRight className="min-w-max w-10 h-10" />
+          <button className="flex items-center justify-center rounded-4xl bg-black text-black text-3xl transition-all duration-600 ease-in-out w-0 px-0 opacity-0 h-[3.33vw] group-hover:w-[3.33vw] group-hover:px-3 group-hover:opacity-100 group-hover:mr-1 group-hover:bg-gray-500 group-hover:text-white overflow-hidden">
+            <ArrowRight className="min-w-max w-[2vw] h-[2vw]" />
           </button>
-          <button className="justify-center mt-2 px-7 py-2 rounded-4xl text-5xl bg-white text-black font-semibold transition-all duration-600 group-hover:bg-gray-500 group-hover:text-white">
+          <button className="justify-center px-[1.46vw] py-0 rounded-4xl text-[2.5vw] whitespace-nowrap bg-white text-black font-semibold transition-all duration-600 group-hover:bg-gray-500 group-hover:text-white">
             Create New
           </button>
-          <button className="flex items-center mt-2 -ml-2 mr-2 justify-center rounded-4xl text-4xl bg-white text-black font-bold transition-all duration-600 ease-in-out w-16 h-16 px-3 py-2 opacity-100  group-hover:w-0 group-hover:px-0 group-hover:opacity-0 group-hover:mr-0 group-hover:bg-gray-500 group-hover:text-white overflow-hidden">
-            <ArrowLeft className="min-w-max w-10 h-10" />
-          </button> 
-          <h1>
+          <button className="flex items-center justify-center rounded-4xl text-4xl bg-white text-black font-bold transition-all duration-600 ease-in-out w-[3.33vw] h-[3.33vw] px-3 py-2 opacity-100 group-hover:w-0 group-hover:px-0 group-hover:opacity-0 group-hover:mr-0 group-hover:bg-gray-500 group-hover:text-white overflow-hidden">
+            <ArrowLeft className="min-w-max w-[2vw] h-[2vw]" />
+          </button>
+          <h1 className="text-[2.75vw] whitespace-nowrap">
             are delivered with quality.
           </h1>
       </div>
