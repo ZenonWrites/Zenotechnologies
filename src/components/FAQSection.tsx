@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ChevronDown, ArrowLeft } from "lucide-react";
+import { useContactForm } from "../context/ContactFormContext";
 
 interface FAQItem {
   q: string;
@@ -31,12 +32,13 @@ const faqs: FAQItem[] = [
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number>(0);
+  const { openContactForm } = useContactForm();
 
   return (
     <section className="w-full bg-black px-5 sm:px-10 py-12 sm:py-20">
       <div className="grid md:grid-cols-[1fr_2fr] gap-8 sm:gap-16">
         {/* Left sidebar card */}
-        <div className="bg-white/4 rounded-2xl p-6 sm:p-10 flex flex-col justify-between min-h-55 md:min-h-105">
+        <div className="bg-white/[0.04] rounded-2xl p-6 sm:p-10 flex flex-col justify-between min-h-[220px] md:min-h-[420px]">
           <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-white flex items-center justify-center">
             <span className="text-black font-bold text-lg sm:text-xl">R</span>
           </div>
@@ -46,10 +48,17 @@ export default function FAQSection() {
           </h3>
 
           <div className="group flex items-center mt-6 md:mt-auto cursor-pointer w-max">
-            <button className="px-5 sm:px-7 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold bg-white text-black transition-colors group-hover:bg-gray-300">
+            <button
+              onClick={openContactForm}
+              className="px-5 sm:px-7 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold bg-white text-black transition-colors group-hover:bg-gray-300"
+            >
               BOOK A CALL
             </button>
-            <button className="flex items-center justify-center rounded-full bg-white text-black w-9 h-9 sm:w-11 sm:h-11 ml-2 transition-colors group-hover:bg-gray-300">
+            <button
+              onClick={openContactForm}
+              aria-label="Book a call"
+              className="flex items-center justify-center rounded-full bg-white text-black w-9 h-9 sm:w-11 sm:h-11 ml-2 transition-colors group-hover:bg-gray-300"
+            >
               <ArrowLeft size={16} />
             </button>
           </div>

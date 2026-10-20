@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useScroll, useMotionValueEvent } from "framer-motion";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
+import { useContactForm } from "../context/ContactFormContext";
 import designImage from './assets/z-final.png'
 
 // Every child link inside a given megamenu tab routes to that tab's
@@ -10,13 +11,14 @@ import designImage from './assets/z-final.png'
 const routeFor: Record<string, string> = {
   portfolio: "/portfolio",
   services: "/services",
-  technology: "/technology",
+  technology: "/technologies",
 };
 
 function Header() {
 
   const [isScrolled, setIsScrolled] = useState(false);
   const { scrollY } = useScroll();
+  const { openContactForm } = useContactForm();
   const [activeTab, setActiveTab] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mobileAccordion, setMobileAccordion] = useState<string | null>(null);
@@ -126,7 +128,7 @@ function Header() {
             <li><Link to={routeFor.technology} onClick={closeAll} className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Vue.js</Link></li>
             <li><Link to={routeFor.technology} onClick={closeAll} className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Flutter</Link></li>
           </ul>
-          {/* <Link to={routeFor.technology} onClick={closeAll} className="inline-flex bg-[#e2e4e9] text-gray-800 text-[15px] font-medium px-5 py-2 rounded-full">6+ technologies</Link> */}
+          <Link to={routeFor.technology} onClick={closeAll} className="inline-flex bg-[#e2e4e9] text-gray-800 text-[15px] font-medium px-5 py-2 rounded-full">6+ technologies</Link>
         </div>
         <div>
           <Link to={routeFor.technology} onClick={closeAll} className="text-[18px] tracking-wide text-gray-900 uppercase mb-8 block hover:text-blue-600">Backend</Link>
@@ -136,7 +138,7 @@ function Header() {
             <li><Link to={routeFor.technology} onClick={closeAll} className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Laravel</Link></li>
             <li><Link to={routeFor.technology} onClick={closeAll} className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> PHP</Link></li>
           </ul>
-          {/* <Link to={routeFor.technology} onClick={closeAll} className="inline-flex bg-[#e2e4e9] text-gray-800 text-[15px] font-medium px-5 py-2 rounded-full">6+ technologies</Link> */}
+          <Link to={routeFor.technology} onClick={closeAll} className="inline-flex bg-[#e2e4e9] text-gray-800 text-[15px] font-medium px-5 py-2 rounded-full">6+ technologies</Link>
         </div>
         <div>
           <Link to={routeFor.technology} onClick={closeAll} className="text-[18px] tracking-wide text-gray-900 uppercase mb-8 block hover:text-blue-600">Devops</Link>
@@ -146,7 +148,7 @@ function Header() {
             <li><Link to={routeFor.technology} onClick={closeAll} className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> GCP</Link></li>
             <li><Link to={routeFor.technology} onClick={closeAll} className="text-[17px] text-gray-600 hover:text-blue-600 flex items-center gap-5"><span className="w-1.5 h-1.5 border-[1.5px] border-gray-400 rounded-full shrink-0"></span> Azure</Link></li>
           </ul>
-          {/* <Link to={routeFor.technology} onClick={closeAll} className="inline-flex bg-[#e2e4e9] text-gray-800 text-[15px] font-medium px-5 py-2 rounded-full">6+ technologies</Link> */}
+          <Link to={routeFor.technology} onClick={closeAll} className="inline-flex bg-[#e2e4e9] text-gray-800 text-[15px] font-medium px-5 py-2 rounded-full">6+ technologies</Link>
         </div>
         <div className="flex flex-col gap-12">
           <Link to={routeFor.technology} onClick={closeAll} className="text-[18px] tracking-wide text-gray-900 hover:text-blue-600 uppercase">Database</Link>
@@ -219,7 +221,13 @@ function Header() {
 
         {/* CTA Button & Mobile Menu Icon */}
         <div className="flex items-center space-x-4">
-          <button className="hidden md:flex items-center gap-2 bg-white hover:bg-blue-600 text-neutral-800 px-4 py-2.5 rounded-full text-md font-medium transition-all">
+          <button
+            onClick={() => {
+              setActiveTab(null); // close any open mega-menu first
+              openContactForm();
+            }}
+            className="hidden md:flex items-center gap-2 bg-white hover:bg-blue-600 text-neutral-800 px-4 py-2.5 rounded-full text-md font-medium transition-all"
+          >
             <span>Let's talk</span>
             <span className="text-lg">→</span>
           </button>
@@ -275,7 +283,7 @@ function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-60 bg-black md:hidden flex flex-col overflow-y-auto"
+            className="fixed inset-0 z-[60] bg-black md:hidden flex flex-col overflow-y-auto"
           >
             {/* Drawer header */}
             <div className="flex justify-between items-center px-6 py-5 border-b border-white/10">
@@ -352,7 +360,13 @@ function Header() {
 
             {/* Drawer CTA */}
             <div className="mt-auto px-6 py-8">
-              <button className="w-full flex items-center justify-center gap-2 bg-white text-neutral-800 px-4 py-4 rounded-full text-lg font-medium">
+              <button
+                onClick={() => {
+                  closeAll();
+                  openContactForm();
+                }}
+                className="w-full flex items-center justify-center gap-2 bg-white text-neutral-800 px-4 py-4 rounded-full text-lg font-medium"
+              >
                 <span>Let's talk</span>
                 <span className="text-lg">→</span>
               </button>
