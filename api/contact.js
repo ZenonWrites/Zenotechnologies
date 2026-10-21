@@ -6,8 +6,8 @@
 // Server-side only: this file never ships to the browser.
 // Keep the repo private. If it ever goes public, revoke the token in
 // Telegram → @BotFather → /revoke, then paste the new one.
-const TELEGRAM_BOT_TOKEN = "PASTE_YOUR_BOT_TOKEN_HERE"; // e.g. "123456789:AAH..."
-const TELEGRAM_CHAT_ID = "PASTE_YOUR_CHAT_ID_HERE"; // groups are negative, e.g. "-1001234567890"
+const TELEGRAM_BOT_TOKEN="8688561256:AAGQi01Qk85jv0M9jDJhvaGoQpYafW5v8u8";
+const TELEGRAM_CHAT_ID="-5462519978";
 
 const WINDOW_MS = 10 * 60 * 1000;
 const MAX_HITS = 5;
