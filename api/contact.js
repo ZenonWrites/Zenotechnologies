@@ -2,6 +2,13 @@
 // Lives in /api at the project root (next to package.json, NOT inside /src).
 // Zero dependencies. Also imported by server/dev.js for local development.
 
+// ——— PASTE YOUR CREDENTIALS HERE ———
+// Server-side only: this file never ships to the browser.
+// Keep the repo private. If it ever goes public, revoke the token in
+// Telegram → @BotFather → /revoke, then paste the new one.
+const TELEGRAM_BOT_TOKEN = "PASTE_YOUR_BOT_TOKEN_HERE"; // e.g. "123456789:AAH..."
+const TELEGRAM_CHAT_ID = "PASTE_YOUR_CHAT_ID_HERE"; // groups are negative, e.g. "-1001234567890"
+
 const WINDOW_MS = 10 * 60 * 1000;
 const MAX_HITS = 5;
 
@@ -55,10 +62,8 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed." });
   }
 
-  // Read env at request time (not at import time) so local dev and Vercel both work.
-  const { TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID } = process.env;
-  if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
-    console.error("Missing TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID environment variable");
+  if (TELEGRAM_BOT_TOKEN.startsWith("PASTE_") || TELEGRAM_CHAT_ID.startsWith("PASTE_")) {
+    console.error("Telegram credentials are still placeholders at the top of api/contact.js");
     return res
       .status(500)
       .json({ error: "The contact form is temporarily unavailable. Please try again later." });
