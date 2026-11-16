@@ -1,6 +1,6 @@
 import type { ComponentType } from "react";
 import { ArrowDownRight, ArrowLeft, Layers, ArrowRight } from "lucide-react";
-import AzureIcon from "./AzureIcon";
+// import AzureIcon from "./AzureIcon";
 import AwsIcon from "./AwsIcon";
 import {
   SiHtml5,
@@ -16,7 +16,7 @@ import {
   SiMongodb,
   SiDjango,
   SiFastapi,
-  SiLaravel,
+  // SiLaravel,
   SiFlutter,
   SiTypescript,
   SiAngular,
