@@ -1,6 +1,10 @@
+import zcopy from "./assets/zcopy.png"
+import zf from "./assets/z-final.png"
+
 interface ClientLogo {
   name: string;
   bg: string;
+  image: string;
 }
 
 const portfolioLinks: string[] = [
@@ -30,12 +34,12 @@ const serviceLinks: string[] = [
   "Search engine optimisation",
 ];
 
-const bottomLinks: string[] = ["ABOUT", "AWARDS", "REVIEWS", "BLOG", "CONTACT US"];
+const bottomLinks: string[] = ["ABOUT", "REVIEWS", "BLOG", "CONTACT US"];
 
 const clientLogos: ClientLogo[] = [
-  { name: "logo-1", bg: "bg-white" },
-  { name: "logo-2", bg: "bg-pink-500" },
-  { name: "logo-3", bg: "bg-slate-900" },
+  { name: "logo-1", bg: "bg-white" , image: zf},
+  { name: "logo-2", bg: "bg-pink-500" , image: zf },
+  { name: "logo-3", bg: "bg-slate-900" , image: zcopy},
 ];
 
 export default function Footer() {
@@ -91,13 +95,13 @@ export default function Footer() {
               href="mailto:office@zenotech.software"
               className="text-white text-base sm:text-xl hover:underline break-all"
             >
-              office@zenotech.software
+              office@zenotechnologies.in
             </a>
             <a
               href="mailto:support@zenotech.software"
               className="text-white text-base sm:text-xl hover:underline break-all"
             >
-              support@zenotech.software
+              javed@zenotechnologies.in
             </a>
           </div>
 
@@ -112,7 +116,7 @@ export default function Footer() {
                 key={logo.name}
                 className={`w-20 h-14 sm:w-24 sm:h-16 rounded-lg ${logo.bg} flex items-center justify-center text-xs text-black/40`}
               >
-                logo
+                <img src={logo.image} />
               </div>
             ))}
           </div>
@@ -136,8 +140,9 @@ export default function Footer() {
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-white/50 text-xs sm:text-sm">
           <span>UA</span>
           <span className="text-white">EN</span>
-          <span className="md:ml-4">31 NE 17TH ST, MIAMI, FL 33132, UNITED STATES</span>
-          <span>+1 786 744 7141</span>
+          <span className="md:ml-4">MUMBAI, MAHARASHTRA, INDIA , REMOTE</span>
+          <span>+91 9867339964</span>
+          <span>+96 6536201184</span>
         </div>
       </div>
 

@@ -1,5 +1,6 @@
 import { ArrowLeft } from "lucide-react";
 import { useContactForm } from "../context/ContactFormContext";
+import zz from "./assets/zcopy.png"
 
 export default function ClosingCTASection() {
   const { openContactForm } = useContactForm();
@@ -8,7 +9,9 @@ export default function ClosingCTASection() {
     <section className="w-full bg-black py-16 sm:py-32 flex flex-col items-center text-center px-6">
       <h2 className="text-white font-bold text-3xl sm:text-5xl md:text-7xl leading-tight max-w-5xl">
         LET&rsquo;S MOVE{" "}
-        <span className="hidden sm:inline-block align-middle w-32 h-20 md:w-40 md:h-24 rounded-xl overflow-hidden bg-gradient-to-br from-emerald-900 to-slate-900 mx-2 -translate-y-2" />
+        <span className="hidden sm:inline-block align-middle w-32 h-20 md:w-40 md:h-24 rounded-xl  bg-linear-to-br from-emerald-900 to-slate-900 mx-2 -translate-y-2" >
+          <img src={zz} className="z-10 object-contain -mt-5"/>
+        </span>
         <br className="hidden sm:block" />
         THE WORLD TOGETHER
       </h2>
@@ -16,7 +19,7 @@ export default function ClosingCTASection() {
       <div className="group flex items-center mt-8 sm:mt-12 cursor-pointer">
         <button
           onClick={openContactForm}
-          className="px-5 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-lg font-semibold bg-white text-black transition-colors group-hover:bg-gray-300"
+          className="justify-center px-[1.46vw] py-0 rounded-4xl text-[2.5vw] whitespace-nowrap bg-white text-black font-semibold transition-all duration-600 group-hover:bg-gray-500 group-hover:text-white"
         >
           BECOME A CLIENT
         </button>

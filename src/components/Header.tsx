@@ -283,7 +283,7 @@ function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[60] bg-black md:hidden flex flex-col overflow-y-auto"
+            className="fixed inset-0 z-[60] bg-black lg:hidden flex flex-col overflow-y-auto"
           >
             {/* Drawer header */}
             <div className="flex justify-between items-center px-6 py-5 border-b border-white/10">

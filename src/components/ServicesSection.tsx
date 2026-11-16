@@ -1,5 +1,12 @@
 import { useState } from "react";
 import { ArrowRight, ArrowLeft } from "lucide-react";
+import redesign from "./assets/redesign.jpeg"
+import seo from "./assets/seo.jpeg"
+import CRM from "./assets/CRM.jpg"
+import ecommerce from "./assets/ecommerce.jpeg"
+import webdev from "./assets/webdev.jpg"
+import landing from "./assets/landing.jpg"
+import application from "./assets/application.jpeg"
 
 interface Service {
   id: string;
@@ -21,21 +28,21 @@ const services: Service[] = [
       "Vue.js Website Development",
       "WordPress Website Development",
     ],
-    imageClass: "bg-gradient-to-br from-slate-100 to-slate-300",
+    imageClass: webdev,
   },
-  {
-    id: "02",
-    title: "Branding and design",
-    items: [
-      "Logo Design",
-      "Brand Guidelines",
-      "Visual Identity",
-      "Packaging Design",
-      "Style Guide",
-      "Brand Strategy",
-    ],
-    imageClass: "bg-gradient-to-br from-rose-100 to-orange-200",
-  },
+  // {
+  //   id: "02",
+  //   title: "Branding and design",
+  //   items: [
+  //     "Logo Design",
+  //     "Brand Guidelines",
+  //     "Visual Identity",
+  //     "Packaging Design",
+  //     "Style Guide",
+  //     "Brand Strategy",
+  //   ],
+  //   imageClass: "bg-gradient-to-br from-rose-100 to-orange-200",
+  // },
   {
     id: "03",
     title: "CRM system",
@@ -47,7 +54,7 @@ const services: Service[] = [
       "Reporting Dashboards",
       "Third-Party Integrations",
     ],
-    imageClass: "bg-gradient-to-br from-sky-100 to-indigo-200",
+    imageClass: CRM,
   },
   {
     id: "04",
@@ -60,7 +67,7 @@ const services: Service[] = [
       "Custom Storefronts",
       "Marketplace Integration",
     ],
-    imageClass: "bg-gradient-to-br from-emerald-100 to-teal-200",
+    imageClass: ecommerce,
   },
   {
     id: "05",
@@ -73,21 +80,21 @@ const services: Service[] = [
       "Webinar Pages",
       "Promo Pages",
     ],
-    imageClass: "bg-gradient-to-br from-amber-100 to-yellow-200",
+    imageClass: landing,
   },
-  {
-    id: "06",
-    title: "Website support",
-    items: [
-      "Bug Fixes",
-      "Performance Monitoring",
-      "Security Updates",
-      "Content Updates",
-      "Uptime Monitoring",
-      "Technical Support",
-    ],
-    imageClass: "bg-gradient-to-br from-purple-100 to-fuchsia-200",
-  },
+  // {
+  //   id: "06",
+  //   title: "Website support",
+  //   items: [
+  //     "Bug Fixes",
+  //     "Performance Monitoring",
+  //     "Security Updates",
+  //     "Content Updates",
+  //     "Uptime Monitoring",
+  //     "Technical Support",
+  //   ],
+  //   imageClass: "bg-gradient-to-br from-purple-100 to-fuchsia-200",
+  // },
   {
     id: "07",
     title: "Redesign",
@@ -99,7 +106,7 @@ const services: Service[] = [
       "Accessibility Improvements",
       "Conversion Optimization",
     ],
-    imageClass: "bg-gradient-to-br from-cyan-100 to-blue-200",
+    imageClass: redesign,
   },
   {
     id: "08",
@@ -112,7 +119,7 @@ const services: Service[] = [
       "App Store Optimization",
       "Push Notifications",
     ],
-    imageClass: "bg-gradient-to-br from-lime-100 to-green-200",
+    imageClass: application,
   },
   {
     id: "09",
@@ -125,7 +132,7 @@ const services: Service[] = [
       "Local SEO",
       "SEO Audits",
     ],
-    imageClass: "bg-gradient-to-br from-red-100 to-rose-200",
+    imageClass: seo,
   },
 ];
 
