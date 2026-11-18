@@ -1,31 +1,21 @@
 import ClosingCTASection from "../ClosingCTASection";
+import DivisionsSection from "../DivisionsSection";
 import FAQSection from "../FAQSection";
 import Hero from "../Hero";
+import HowItWorksSection from "../HowItWorksSection";
 import PortfolioCarousel from "../Portfoliocarousel";
-import ServicesSection from "../ServicesSection";
-import TechnologiesSection from "../TechnologiesSection";
-// import TestimonialSlider from "../TestimonialSlider";
-// import ProjectGrid from "../ProjectGrid";
 
-
-
-
-
-function HomePage () {
-    return (
-        <div className="w-full overflow-hidden">
-        <Hero />
-        {/* <ProjectGrid /> */}
-        <PortfolioCarousel/>
-        <ServicesSection />
-        {/* <TestimonialSlider /> */}
-        <TechnologiesSection />
-        <ClosingCTASection />
-        <FAQSection />
-        {/* <Footer /> */}
-        </div>
-     
-    )
+function HomePage() {
+  return (
+    <div className="w-full overflow-hidden">
+      <Hero />
+      <DivisionsSection />
+      <PortfolioCarousel />
+      <HowItWorksSection />
+      <ClosingCTASection />
+      <FAQSection />
+    </div>
+  );
 }
 
 export default HomePage;

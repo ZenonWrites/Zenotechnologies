@@ -3,6 +3,8 @@ export interface ContactPayload {
   phone: string;
   email: string;
   message: string;
+  /** Which division the enquiry is for (display name). */
+  division: string;
   /** Honeypot — real users never see or fill this. */
   botcheck: string;
 }

@@ -1,9 +1,15 @@
 import { useRef, useState, useLayoutEffect } from "react";
 import { motion, useScroll, useTransform, useSpring, useMotionValueEvent } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import HeroVideo from "./HeroVideo";
+import { useContactForm } from "../context/ContactFormContext";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 
 function Hero() {
+  const navigate = useNavigate();
+  const { openContactForm } = useContactForm();
+  const goPortfolio = () => navigate("/portfolio");
+  const startProject = () => openContactForm();
   const wrapperRef = useRef<HTMLDivElement>(null);
   const slotRef = useRef<HTMLDivElement>(null);
   const [rect, setRect] = useState<{ top: number; left: number; width: number; height: number } | null>(null);
@@ -63,10 +69,10 @@ function Hero() {
     return (
       <>
         <div className="w-full bg-black px-5 pt-28 pb-12">
-          <h2 className="text-white font-bold text-5xl sm:text-5xl leading-[0.95] whitespace-nowrap">
-            SAAS. APP.
+          <h2 className="text-white font-bold text-[10vw] leading-[0.95] whitespace-nowrap">
+            BUILD. DESIGN.
             <br />
-            AI. E-COMMERCE.
+            DRAFT. DELIVER.
           </h2>
 
           <div className="w-full aspect-video rounded-2xl overflow-hidden mt-8">
@@ -74,26 +80,26 @@ function Hero() {
           </div>
 
           <p className="text-white/80 text-base mt-8">
-            We develop online stores, CRM systems, SaaS solutions, and app
-            platforms — integrating AI into processes and business solutions.
+            Software &amp; AI, fabrication, online interior design and CAD
+            documentation — four specialist divisions, one point of contact.
           </p>
 
           <div className="flex items-center gap-3 mt-6">
-            <button className="px-6 py-3 rounded-full text-base bg-white text-black font-semibold">
+            <button onClick={goPortfolio} className="px-6 py-3 rounded-full text-base bg-white text-black font-semibold">
               View Portfolio
             </button>
-            <button className="flex items-center justify-center rounded-full bg-white text-black w-11 h-11">
-              <ArrowLeft size={18} />
+            <button onClick={goPortfolio} aria-label="View portfolio" className="flex items-center justify-center rounded-full bg-white text-black w-11 h-11">
+              <ArrowRight size={18} />
             </button>
           </div>
         </div>
 
         <div className="w-full bg-black text-white px-5 py-14 text-center">
           <h1 className="text-2xl sm:text-3xl font-bold leading-snug">
-            All our projects are delivered with quality.
+            Every project is delivered with quality.
           </h1>
-          <button className="mt-6 px-6 py-3 rounded-full text-base bg-white text-black font-semibold">
-            Create New
+          <button onClick={startProject} className="mt-6 px-6 py-3 rounded-full text-base bg-white text-black font-semibold">
+            Start a project
           </button>
         </div>
       </>
@@ -109,10 +115,10 @@ function Hero() {
         <div className="sticky top-0 h-screen w-full overflow-hidden">
           <div className="w-full h-screen mx-auto px-10 -my-20 bg-black">
             <div className="flex flex-col h-2/3 mt-15 ml-6 gap-y-10">
-              <div className="flex -mb-[4.1667vw]">
+              <div className="flex -mb-[2.8vw]">
                 <div className="flex w-2/3 h-auto font-bold">
-                  <h2 className="text-[10.9375vw] text-white whitespace-nowrap">SAAS.</h2>
-                  <h2 className="text-[10.9375vw] text-white whitespace-nowrap">APP.</h2>
+                  <h2 className="text-[7.4vw] text-white whitespace-nowrap mr-[1.6vw]">BUILD.</h2>
+                  <h2 className="text-[7.4vw] text-white whitespace-nowrap">DESIGN.</h2>
                 </div>
                 <div className="flex w-full -mb-[2.0833vw]">
                   <div className="flex w-full overflow-hidden justify-end items-start -mt-[0.8333vw] mr-[4.1667vw]">
@@ -121,9 +127,9 @@ function Hero() {
                 </div>
               </div>
               <div className="flex w-full h-auto">
-                <div className="flex -mt-[2.5vw] font-bold">
-                  <h2 className="text-[10.9375vw] text-white">AI.</h2>
-                  <h2 className="text-[10.9375vw] text-white whitespace-nowrap">E-COMMERCE.</h2>
+                <div className="flex -mt-[1.7vw] font-bold">
+                  <h2 className="text-[7.4vw] text-white whitespace-nowrap mr-[1.6vw]">DRAFT.</h2>
+                  <h2 className="text-[7.4vw] text-white whitespace-nowrap">DELIVER.</h2>
                 </div>
               </div>
             </div>
@@ -133,10 +139,10 @@ function Hero() {
               <div className="w-1/3 bg-black" />
               <div className="w-1/3 bg-black flex flex-col space-y-2">
                 <h2 className="justify-center items-center px-6 text-2xl mt-12">
-                  We develop online stores, CRM systems, SaaS solutions, and app
-                  platforms — integrating AI into processes and business solutions.
+                  Software &amp; AI, fabrication, online interior design and CAD
+                  documentation — four specialist divisions, one point of contact.
                 </h2>
-                <div className="group flex mx-auto cursor-pointer mt-9 items-center h-15">
+                <div onClick={goPortfolio} className="group flex mx-auto cursor-pointer mt-9 items-center h-15">
                   <button className="flex items-center justify-center rounded-4xl bg-black text-black text-3xl transition-all duration-600 ease-in-out w-0 px-0 opacity-0 ml-0 h-14 group-hover:w-14 group-hover:px-3 group-hover:opacity-100 group-hover:mr-1 group-hover:bg-gray-500 group-hover:text-white overflow-hidden">
                     <ArrowRight className="min-w-max" />
                   </button>
@@ -173,19 +179,19 @@ function Hero() {
 
       <div className="group flex flex-wrap bg-black w-full text-white mx-auto items-center justify-center gap-x-[1.1vw] gap-y-4 text-center px-6 py-[5vw] mt-[2vw] font-bold">
          <h1 className="text-[2.75vw] whitespace-nowrap">
-         All our projects
+         Every project
          </h1>
-          <button className="flex items-center justify-center rounded-4xl bg-black text-black text-3xl transition-all duration-600 ease-in-out w-0 px-0 opacity-0 h-[3.33vw] group-hover:w-[3.33vw] group-hover:px-3 group-hover:opacity-100 group-hover:mr-1 group-hover:bg-gray-500 group-hover:text-white overflow-hidden">
+          <button onClick={startProject} className="flex items-center justify-center rounded-4xl bg-black text-black text-3xl transition-all duration-600 ease-in-out w-0 px-0 opacity-0 h-[3.33vw] group-hover:w-[3.33vw] group-hover:px-3 group-hover:opacity-100 group-hover:mr-1 group-hover:bg-gray-500 group-hover:text-white overflow-hidden">
             <ArrowRight className="min-w-max w-[2vw] h-[2vw]" />
           </button>
-          <button className="justify-center px-[1.46vw] py-0 rounded-4xl text-[2.5vw] whitespace-nowrap bg-white text-black font-semibold transition-all duration-600 group-hover:bg-gray-500 group-hover:text-white">
-            Create New
+          <button onClick={startProject} className="justify-center px-[1.46vw] py-0 rounded-4xl text-[2.5vw] whitespace-nowrap bg-white text-black font-semibold transition-all duration-600 group-hover:bg-gray-500 group-hover:text-white">
+            Start a project
           </button>
-          <button className="flex items-center justify-center rounded-4xl text-4xl bg-white text-black font-bold transition-all duration-600 ease-in-out w-[3.33vw] h-[3.33vw] px-3 py-2 opacity-100 group-hover:w-0 group-hover:px-0 group-hover:opacity-0 group-hover:mr-0 group-hover:bg-gray-500 group-hover:text-white overflow-hidden">
+          <button onClick={startProject} className="flex items-center justify-center rounded-4xl text-4xl bg-white text-black font-bold transition-all duration-600 ease-in-out w-[3.33vw] h-[3.33vw] px-3 py-2 opacity-100 group-hover:w-0 group-hover:px-0 group-hover:opacity-0 group-hover:mr-0 group-hover:bg-gray-500 group-hover:text-white overflow-hidden">
             <ArrowLeft className="min-w-max w-[2vw] h-[2vw]" />
           </button>
           <h1 className="text-[2.75vw] whitespace-nowrap">
-            are delivered with quality.
+            is delivered with quality.
           </h1>
       </div>
     </>

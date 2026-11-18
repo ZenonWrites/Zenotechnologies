@@ -18,13 +18,13 @@ export default function ClosingCTASection() {
 
       <div className="group flex items-center mt-8 sm:mt-12 cursor-pointer">
         <button
-          onClick={openContactForm}
-          className="justify-center px-[1.46vw] py-0 rounded-4xl text-[2.5vw] whitespace-nowrap bg-white text-black font-semibold transition-all duration-600 group-hover:bg-gray-500 group-hover:text-white"
+          onClick={() => openContactForm()}
+          className="justify-center sm:px-[1.46vw] rounded-4xl text-base sm:text-[2.5vw] px-6 py-3 sm:py-0 whitespace-nowrap bg-white text-black font-semibold transition-all duration-600 group-hover:bg-gray-500 group-hover:text-white"
         >
           BECOME A CLIENT
         </button>
         <button
-          onClick={openContactForm}
+          onClick={() => openContactForm()}
           aria-label="Become a client"
           className="flex items-center justify-center rounded-full bg-white text-black w-10 h-10 sm:w-14 sm:h-14 ml-2 transition-colors group-hover:bg-gray-300"
         >

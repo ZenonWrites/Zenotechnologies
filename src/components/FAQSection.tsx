@@ -9,24 +9,28 @@ interface FAQItem {
 
 const faqs: FAQItem[] = [
   {
-    q: "What is the price for development?",
-    a: "Pricing depends on scope, complexity, and timeline. Share your requirements and we'll put together a tailored estimate.",
+    q: "Who will I be dealing with?",
+    a: "You deal with us only. We scope your brief, match it to the right specialist, keep you updated and review the work before it reaches you.",
   },
   {
-    q: "What terms do we offer?",
-    a: "Project timelines are agreed upfront during discovery and confirmed in the proposal before work begins.",
+    q: "What does a project cost?",
+    a: "It depends on scope, complexity and timeline. Share your requirements and we will send a clear, itemised estimate before any work begins.",
   },
   {
-    q: "What we are offering for website promotion?",
-    a: "SEO fundamentals, performance optimization, and ongoing support packages tailored to your goals.",
+    q: "How long will it take?",
+    a: "Timelines are agreed during scoping and confirmed in the proposal. A landing page and a full SaaS product are very different jobs, so we never quote blind.",
   },
   {
-    q: "How you estimate the cost?",
-    a: "We break the project into stages, estimate each based on scope and complexity, then share a transparent total.",
+    q: "Is interior design really 100% online?",
+    a: "Yes. You share photos, measurements and your preferences, and you receive layouts, moodboards and 3D visuals remotely. We do not do site visits for design.",
   },
   {
-    q: "What services does your support service provide?",
-    a: "Bug fixes, monitoring, feature updates, and priority response for anything affecting your live product.",
+    q: "Do you handle on-site fabrication and construction work?",
+    a: "Fabrication and construction involve physical work, so location, logistics and scope are confirmed with you during scoping before we commit.",
+  },
+  {
+    q: "What happens after delivery?",
+    a: "Software projects can continue with support: bug fixes, monitoring and feature updates. Drawings and documents can be revised within the agreed scope.",
   },
 ];
 
@@ -40,7 +44,7 @@ export default function FAQSection() {
         {/* Left sidebar card */}
         <div className="bg-white/[0.04] rounded-2xl p-6 sm:p-10 flex flex-col justify-between min-h-[220px] md:min-h-[420px]">
           <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-white flex items-center justify-center">
-            <span className="text-black font-bold text-lg sm:text-xl">R</span>
+            <span className="text-black font-bold text-lg sm:text-xl">Z</span>
           </div>
 
           <h3 className="text-white text-2xl sm:text-4xl font-semibold mt-6 sm:mt-10">
@@ -49,13 +53,13 @@ export default function FAQSection() {
 
           <div className="group flex items-center mt-6 md:mt-auto cursor-pointer w-max">
             <button
-              onClick={openContactForm}
+              onClick={() => openContactForm()}
               className="px-5 sm:px-7 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold bg-white text-black transition-colors group-hover:bg-gray-300"
             >
               BOOK A CALL
             </button>
             <button
-              onClick={openContactForm}
+              onClick={() => openContactForm()}
               aria-label="Book a call"
               className="flex items-center justify-center rounded-full bg-white text-black w-9 h-9 sm:w-11 sm:h-11 ml-2 transition-colors group-hover:bg-gray-300"
             >

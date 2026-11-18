@@ -1,151 +1,24 @@
 import { useState } from "react";
-import { ArrowRight, ArrowLeft } from "lucide-react";
-import redesign from "./assets/redesign.jpeg"
-import seo from "./assets/seo.jpeg"
-import CRM from "./assets/CRM.jpg"
-import ecommerce from "./assets/ecommerce.jpeg"
-import webdev from "./assets/webdev.jpg"
-import landing from "./assets/landing.jpg"
-import application from "./assets/application.jpeg"
+import { ArrowRight } from "lucide-react";
+import { useContactForm } from "../context/ContactFormContext";
+import type { ServiceGroup } from "../data/divisions";
 
-interface Service {
-  id: string;
-  title: string;
-  items: string[]; // flows into a 2-column grid, row by row
-  // Swap this for a real <img src={...} /> per service once assets are ready.
-  imageClass: string;
+interface Props {
+  services: ServiceGroup[];
+  /** Division id, preselected in the contact form. */
+  divisionId?: string;
+  title?: string;
 }
 
-const services: Service[] = [
-  {
-    id: "01",
-    title: "Website development",
-    items: [
-      "Angular Website Development",
-      "Laravel Website Development",
-      "Node.js Website Development",
-      "React Website Development",
-      "Vue.js Website Development",
-      "WordPress Website Development",
-    ],
-    imageClass: webdev,
-  },
-  // {
-  //   id: "02",
-  //   title: "Branding and design",
-  //   items: [
-  //     "Logo Design",
-  //     "Brand Guidelines",
-  //     "Visual Identity",
-  //     "Packaging Design",
-  //     "Style Guide",
-  //     "Brand Strategy",
-  //   ],
-  //   imageClass: "bg-gradient-to-br from-rose-100 to-orange-200",
-  // },
-  {
-    id: "03",
-    title: "CRM system",
-    items: [
-      "Custom CRM Development",
-      "Sales Automation",
-      "Customer Support Tools",
-      "Lead Management",
-      "Reporting Dashboards",
-      "Third-Party Integrations",
-    ],
-    imageClass: CRM,
-  },
-  {
-    id: "04",
-    title: "E-commerce",
-    items: [
-      "Shopify Development",
-      "WooCommerce Development",
-      "Payment Gateway Integration",
-      "Inventory Management",
-      "Custom Storefronts",
-      "Marketplace Integration",
-    ],
-    imageClass: ecommerce,
-  },
-  {
-    id: "05",
-    title: "Landing page",
-    items: [
-      "Product Landing Pages",
-      "Event Landing Pages",
-      "A/B Testing Pages",
-      "Lead Capture Pages",
-      "Webinar Pages",
-      "Promo Pages",
-    ],
-    imageClass: landing,
-  },
-  // {
-  //   id: "06",
-  //   title: "Website support",
-  //   items: [
-  //     "Bug Fixes",
-  //     "Performance Monitoring",
-  //     "Security Updates",
-  //     "Content Updates",
-  //     "Uptime Monitoring",
-  //     "Technical Support",
-  //   ],
-  //   imageClass: "bg-gradient-to-br from-purple-100 to-fuchsia-200",
-  // },
-  {
-    id: "07",
-    title: "Redesign",
-    items: [
-      "UX Audit",
-      "Visual Refresh",
-      "Responsive Redesign",
-      "Content Restructuring",
-      "Accessibility Improvements",
-      "Conversion Optimization",
-    ],
-    imageClass: redesign,
-  },
-  {
-    id: "08",
-    title: "Application development",
-    items: [
-      "iOS App Development",
-      "Android App Development",
-      "Cross-Platform Apps",
-      "App Maintenance",
-      "App Store Optimization",
-      "Push Notifications",
-    ],
-    imageClass: application,
-  },
-  {
-    id: "09",
-    title: "Search engine optimisation",
-    items: [
-      "Keyword Research",
-      "On-Page SEO",
-      "Technical SEO",
-      "Link Building",
-      "Local SEO",
-      "SEO Audits",
-    ],
-    imageClass: seo,
-  },
-];
-
-const TOTAL_LINES = services.length;
-
-export default function ServicesSection() {
+export default function ServicesSection({ services, divisionId = "", title = "SERVICES" }: Props) {
+  const { openContactForm } = useContactForm();
   const [openIndex, setOpenIndex] = useState<number>(-1);
   const [hoveredIndex, setHoveredIndex] = useState<number>(-1);
 
   return (
     <section className="w-full bg-black px-5 sm:px-10 py-12 sm:py-20">
       <h2 className="text-white text-3xl sm:text-5xl md:text-6xl font-bold mb-8 sm:mb-14 sm:ml-2">
-        SERVICES
+        {title}
       </h2>
 
       <div className="flex flex-col">
@@ -196,7 +69,7 @@ export default function ServicesSection() {
                   {/* 9-segment indicator — this row's own segment (matching
                       its position, 1-indexed) glows; grows taller on hover. */}
                   <div className="hidden sm:flex items-center gap-1.5 ml-2">
-                    {Array.from({ length: TOTAL_LINES }).map((_, lineIdx) => {
+                    {Array.from({ length: services.length }).map((_, lineIdx) => {
                       const isOwnSegment = lineIdx === index;
                       return (
                         <span
@@ -224,9 +97,14 @@ export default function ServicesSection() {
                 <div className="overflow-hidden">
                   <div className="flex flex-col md:flex-row gap-8 md:gap-12 px-3 sm:px-6 pb-10">
                     {/* Mobile only: image first */}
-                    <div
-                      className={`md:hidden w-full aspect-4/3rounded-2xl overflow-hidden ${service.imageClass}`}
-                    />
+                    {service.image && (
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        loading="lazy"
+                        className="md:hidden w-full aspect-4/3 rounded-2xl object-cover"
+                      />
+                    )}
 
                     {/* Left: repeated title (mobile) + item grid + button */}
                     <div className="flex-1 order-2 md:order-1">
@@ -238,7 +116,7 @@ export default function ServicesSection() {
                         {service.items.map((item) => (
                           <div
                             key={item}
-                            className="flex items-center gap-2 sm:gap-3 text-white/70 text-sm sm:text-lg hover:text-white transition-colors cursor-pointer"
+                            className="flex items-center gap-2 sm:gap-3 text-white/70 text-sm sm:text-lg"
                           >
                             <span className="w-1.5 h-1.5 rounded-full border border-white/40 shrink-0" />
                             {item}
@@ -246,23 +124,24 @@ export default function ServicesSection() {
                         ))}
                       </div>
 
-                      <div className="group flex mx-auto cursor-pointer mt-9 items-center h-15">
-                        <button className="flex items-center justify-center rounded-4xl bg-black text-black text-3xl transition-all duration-600 ease-in-out w-0 px-2 py-2 opacity-0 ml-0 h-10 group-hover:w-10 group-hover:px-2 group-hover:opacity-100 group-hover:mr-1 group-hover:bg-gray-500 group-hover:text-white overflow-hidden">
-                          <ArrowRight className="min-w-max" />
-                        </button>
-                        <button className="justify-center px-5 py-1 rounded-4xl text-2xl bg-white text-black font-medium transition-all duration-600 group-hover:bg-gray-500 group-hover:text-white">
-                          View Service Details
-                        </button>
-                        <button className="flex items-center justify-center rounded-4xl text-2xl bg-white text-black font-bold transition-all duration-600 ease-in-out w-10 h-10 px-2 py-2 opacity-100 ml-1 group-hover:w-0 group-hover:px-0 group-hover:opacity-0 group-hover:mr-0 group-hover:bg-gray-500 group-hover:text-white overflow-hidden">
-                          <ArrowLeft className="min-w-max" />
-                        </button>
-                      </div>
+                      <button
+                        type="button"
+                        onClick={() => openContactForm(divisionId)}
+                        className="mt-9 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-base sm:text-xl font-medium text-black transition-colors hover:bg-gray-300"
+                      >
+                        Discuss this service <ArrowRight size={20} />
+                      </button>
                     </div>
 
                     {/* Right: image — desktop only */}
-                    <div
-                      className={`hidden md:block w-full md:w-[40%] aspect-4/3 rounded-2xl overflow-hidden order-2 ${service.imageClass}`}
-                    />
+                    {service.image && (
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        loading="lazy"
+                        className="hidden md:block w-full md:w-[40%] aspect-4/3 rounded-2xl object-cover order-2"
+                      />
+                    )}
                   </div>
                 </div>
               </div>

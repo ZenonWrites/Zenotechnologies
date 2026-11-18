@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import myVideo from "./assets/zeno-tech-promo.mp4";
+import poster from "./assets/hero-poster.jpg";
 import { Volume2, VolumeX } from "lucide-react";
 
 export default function HeroVideo() {
@@ -7,15 +8,15 @@ export default function HeroVideo() {
   const [isMuted, setIsMuted] = useState(true);
   const [hovering, setHovering] = useState(false);
   const [pos, setPos] = useState({ x: 0, y: 0 });
-  const [canHover, setCanHover] = useState(true);
+  const [canHover, setCanHover] = useState(
+    () => typeof window !== "undefined" && window.matchMedia("(hover: hover) and (pointer: fine)").matches
+  );
 
   // Detect whether the device has a real mouse (fine pointer + hover).
   // Touch devices get a simpler tap-to-mute button instead of the
   // follow-cursor pill, since hover/mousemove don't behave the same way there.
   useEffect(() => {
     const mq = window.matchMedia("(hover: hover) and (pointer: fine)");
-    setCanHover(mq.matches);
-
     const handleChange = (e: MediaQueryListEvent) => setCanHover(e.matches);
     mq.addEventListener("change", handleChange);
     return () => mq.removeEventListener("change", handleChange);
@@ -45,6 +46,8 @@ export default function HeroVideo() {
         ref={videoRef}
         className="w-full min-h-full object-cover"
         autoPlay
+        poster={poster}
+        preload="metadata"
         loop
         muted
         playsInline

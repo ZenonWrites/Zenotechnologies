@@ -1,5 +1,5 @@
 import type { ComponentType } from "react";
-import { ArrowDownRight, ArrowLeft, Layers, ArrowRight } from "lucide-react";
+import { ArrowDownRight, Layers } from "lucide-react";
 // import AzureIcon from "./AzureIcon";
 import AwsIcon from "./AwsIcon";
 import {
@@ -38,7 +38,7 @@ interface TechColumn {
 
 const columns: TechColumn[] = [
   {
-    label: "SINGLE",
+    label: "FOUNDATIONS",
     items: [
       { label: "HTML", Icon: SiHtml5 },
       { label: "CSS", Icon: SiCss },
@@ -50,7 +50,7 @@ const columns: TechColumn[] = [
     ],
   },
   {
-    label: "MIDDLE",
+    label: "FULL-STACK & MOBILE",
     items: [
       { label: "Python", Icon: SiPython },
       { label: "React JS", Icon: SiReact },
@@ -65,7 +65,7 @@ const columns: TechColumn[] = [
     ],
   },
   {
-    label: "ENTERPRISE",
+    label: "ENTERPRISE & CLOUD",
     items: [
       { label: "TypeScript", Icon: SiTypescript },
       { label: "Angular", Icon: SiAngular },
@@ -78,7 +78,7 @@ const columns: TechColumn[] = [
 
 export default function TechnologiesSection() {
   return (
-    <section className="w-full bg-black px-5 sm:px-10 py-12 sm:py-20">
+    <section id="technologies" className="w-full bg-black px-5 sm:px-10 py-12 sm:py-20">
       <div className="grid md:grid-cols-[1fr_2fr] gap-10 sm:gap-16">
         {/* Left: heading + copy + CTA */}
         <div className="flex flex-col justify-between">
@@ -92,17 +92,6 @@ export default function TechnologiesSection() {
             <p className="text-white/50 text-base sm:text-lg max-w-xs">
               A personalized approach to every project — for the best results.
             </p>
-              <div className="-ml-2 group flex justify-center mx-auto cursor-pointer mt-9  items-center h-15 px-3 py-8 rounded-4xl bg-white group-hover:bg-gray-500 text-black group-hover:text-white">
-                <button className="py-2 flex items-center justify-center rounded-4xl text-3xl transition-all duration-600 ease-in-out w-0 px-0 opacity-0 ml-0 h-14 group-hover:w-14 group-hover:px-3 group-hover:opacity-100 group-hover:mr-1  overflow-hidden">
-                  <ArrowRight size={52} />
-                </button>
-                <button className="justify-center px-3 py-4 rounded-4xl text-3xl font-semibold transition-all duration-600 ">
-                  More Technologies
-                </button>
-                <button className="flex items-center justify-center rounded-4xl text-3xl  font-bold transition-all duration-600 ease-in-out w-14 h-14 px-3 py-2 opacity-100 ml-0 group-hover:w-0 group-hover:px-0 group-hover:opacity-0 group-hover:mr-0  overflow-hidden">
-                  <ArrowLeft size={52} />
-                </button>
-            </div>
           </div>
         </div>
 

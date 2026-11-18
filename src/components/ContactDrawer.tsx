@@ -8,41 +8,53 @@ import {
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowLeft, X } from "lucide-react";
 import { sendContact, type ContactPayload } from "../lib/sendContact";
+import { divisions } from "../data/divisions";
 
 interface ContactDrawerProps {
   isOpen: boolean;
   onClose: () => void;
+  /** Division id to preselect, or "" for none. */
+  defaultDivision?: string;
 }
 
 type Status = "idle" | "submitting" | "success" | "error";
 
-const EMPTY_FORM: ContactPayload = {
+type FormState = Omit<ContactPayload, "division"> & { division: string }; // division = id here
+
+const EMPTY_FORM: FormState = {
   name: "",
   phone: "",
   email: "",
   message: "",
+  division: "",
   botcheck: "",
 };
 
 const FIELDS = [
-  { name: "name", label: "(Name)", placeholder: "Sirius Black", type: "text", autoComplete: "name", maxLength: 100, required: false },
-  { name: "phone", label: "(Phone)*", placeholder: "+1 312 340 0323", type: "tel", autoComplete: "tel", maxLength: 30, required: true },
-  { name: "email", label: "(Email)", placeholder: "siriusblack@mail.com", type: "email", autoComplete: "email", maxLength: 200, required: false },
+  { name: "name", label: "(Name)", placeholder: "Your name", type: "text", autoComplete: "name", maxLength: 100, required: false },
+  { name: "phone", label: "(Phone)*", placeholder: "+966 53 620 1184", type: "tel", autoComplete: "tel", maxLength: 30, required: true },
+  { name: "email", label: "(Email)", placeholder: "you@example.com", type: "email", autoComplete: "email", maxLength: 200, required: false },
 ] as const;
 
 // The underline thickens on focus via box-shadow, so nothing shifts by a pixel.
 const fieldClasses =
-  "mt-1 w-full border-0 border-b border-black bg-transparent pb-3 text-3xl uppercase tracking-tighter text-black outline-none " +
+  "mt-1 w-full border-0 border-b border-black bg-transparent pb-3 text-3xl tracking-tighter text-black outline-none " +
   "placeholder:text-neutral-500 focus:shadow-[0_1px_0_0_#000] sm:text-4xl lg:text-5xl";
 
 // Same left offset as the reference: the form sits inset from the panel edge on desktop.
 const contentPadding = "px-5 sm:px-10 md:pl-[17%] md:pr-10";
 
-export default function ContactDrawer({ isOpen, onClose }: ContactDrawerProps) {
+export default function ContactDrawer({ isOpen, onClose, defaultDivision = "" }: ContactDrawerProps) {
   const reduceMotion = useReducedMotion();
   const firstFieldRef = useRef<HTMLInputElement>(null);
 
-  const [form, setForm] = useState<ContactPayload>(EMPTY_FORM);
+  const [form, setForm] = useState<FormState>({ ...EMPTY_FORM, division: defaultDivision });
+  const [lastDefault, setLastDefault] = useState(defaultDivision);
+  // Opening from a division button preselects that division (state adjusted during render).
+  if (defaultDivision !== lastDefault) {
+    setLastDefault(defaultDivision);
+    setForm((prev) => ({ ...prev, division: defaultDivision }));
+  }
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
 
@@ -83,7 +95,7 @@ export default function ContactDrawer({ isOpen, onClose }: ContactDrawerProps) {
     return () => window.clearTimeout(t);
   }, [isOpen]);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
@@ -96,8 +108,11 @@ export default function ContactDrawer({ isOpen, onClose }: ContactDrawerProps) {
     setError("");
 
     try {
-      await sendContact(form);
-      setForm(EMPTY_FORM);
+      await sendContact({
+        ...form,
+        division: divisions.find((d) => d.id === form.division)?.name ?? "Not sure yet",
+      });
+      setForm({ ...EMPTY_FORM, division: defaultDivision });
       setStatus("success");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Your message wasn't sent. Please try again.");
@@ -146,7 +161,7 @@ export default function ContactDrawer({ isOpen, onClose }: ContactDrawerProps) {
               <button
                 type="button"
                 onClick={onClose}
-                className="flex items-center gap-2 text-base font-medium uppercase focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black sm:text-lg"
+                className="flex items-center gap-2 text-base font-medium focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black sm:text-lg"
               >
                 Close <X size={18} />
               </button>
@@ -198,6 +213,29 @@ export default function ContactDrawer({ isOpen, onClose }: ContactDrawerProps) {
                       />
                     </div>
                   ))}
+
+                  <div>
+                    <label
+                      htmlFor="cf-division"
+                      className="block text-sm text-neutral-600 sm:text-base"
+                    >
+                      (What do you need?)
+                    </label>
+                    <select
+                      id="cf-division"
+                      name="division"
+                      value={form.division}
+                      onChange={handleChange}
+                      className={`${fieldClasses} cursor-pointer`}
+                    >
+                      <option value="">Not sure yet</option>
+                      {divisions.map((d) => (
+                        <option key={d.id} value={d.id}>
+                          {d.name}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
 
                   <div>
                     <label

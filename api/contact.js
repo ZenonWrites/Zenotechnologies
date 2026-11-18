@@ -86,9 +86,10 @@ export default async function handler(req, res) {
   const email = clean(body.email, 200);
   const message = clean(body.message, 2000);
   const source = clean(body.source, 300);
+  const division = clean(body.division, 80);
 
   if (!/^[+()\d\s\-.]{5,30}$/.test(phone)) {
-    return res.status(400).json({ error: "Enter a valid phone number, for example +1 312 340 0323." });
+    return res.status(400).json({ error: "Enter a valid phone number, for example +966 53 620 1184." });
   }
   if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return res.status(400).json({ error: "Enter a valid email address, or leave the field empty." });
@@ -100,6 +101,7 @@ export default async function handler(req, res) {
     `<b>Name:</b> ${escapeHtml(name) || "—"}`,
     `<b>Phone:</b> ${escapeHtml(phone)}`,
     `<b>Email:</b> ${escapeHtml(email) || "—"}`,
+    `<b>Division:</b> ${escapeHtml(division) || "—"}`,
     "",
     "<b>Message:</b>",
     escapeHtml(message) || "—",
