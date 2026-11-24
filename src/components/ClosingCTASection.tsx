@@ -13,7 +13,7 @@ export default function ClosingCTASection() {
           <img src={zz} className="z-10 object-contain -mt-5"/>
         </span>
         <br className="hidden sm:block" />
-        THE WORLD TOGETHER
+         WORLD TOGETHER
       </h2>
 
       <div className="group flex items-center mt-8 sm:mt-12 cursor-pointer">

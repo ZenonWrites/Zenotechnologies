@@ -55,7 +55,7 @@ export default function DivisionPage() {
       </section>
 
       <section className="px-5 sm:px-10 pb-12 sm:pb-20">
-        <h2 className="text-white/50 text-lg sm:text-2xl mb-4">Also from ZenoTech</h2>
+        <h2 className="text-white/50 text-lg sm:text-2xl mb-4">Also from ZenoUnified Solutions</h2>
         <div className="flex flex-wrap gap-3">
           {others.map((d) => (
             <PillButton key={d.id} label={d.name} to={`/divisions/${d.slug}`} variant="outline" />

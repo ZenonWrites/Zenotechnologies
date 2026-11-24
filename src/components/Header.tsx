@@ -35,7 +35,7 @@ function Header() {
         }`}
       >
         <Link to="/" onClick={closeAll} className="font-bold text-xl md:text-2xl tracking-tighter text-white">
-          ZenoTech<span className="text-blue-500">.</span>
+          ZenoUnified Solutions<span className="text-blue-500">.</span>
         </Link>
 
         <nav className="hidden md:flex space-x-12 lg:space-x-16 text-xl font-medium text-gray-200">
@@ -113,7 +113,7 @@ function Header() {
           >
             <div className="flex justify-between items-center px-6 py-5 border-b border-white/10">
               <Link to="/" onClick={closeAll} className="font-bold text-xl tracking-tighter text-white">
-                ZenoTech<span className="text-blue-500">.</span>
+                ZenoUnified Solutions<span className="text-blue-500">.</span>
               </Link>
               <button onClick={closeAll} aria-label="Close menu" className="text-white p-2">
                 <X size={26} />

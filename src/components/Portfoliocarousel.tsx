@@ -3,8 +3,14 @@ import { motion, useMotionValue, animate, type PanInfo } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { projects } from "../data/projects";
+import ProjectBadge from "./ProjectBadge";
 
 const GAP_PX = 24; // matches gap-6
+
+// Real client work first, demos after
+const orderedProjects = [...projects].sort(
+  (a, b) => Number(b.kind === "client") - Number(a.kind === "client")
+);
 
 export default function PortfolioCarousel() {
   const containerRef = useRef<HTMLDivElement>(null); // fixed viewport, defines drag bounds
@@ -80,7 +86,7 @@ export default function PortfolioCarousel() {
             dragElastic={0.08}
             onDragEnd={handleDragEnd}
           >
-            {projects.map((project, i) => (
+            {orderedProjects.map((project, i) => (
               <a
                 key={project.id}
                 href={project.link}
@@ -93,16 +99,19 @@ export default function PortfolioCarousel() {
                 }}
                 className="group flex flex-col shrink-0 select-none w-[75%] sm:w-[42%] lg:w-[28%]"
               >
-                <div className="w-full aspect-4/3 rounded-xl overflow-hidden pointer-events-none">
-                  {/* <div
-                    className={`w-full h-full ${project.image} group-hover:scale-105 transition-transform duration-500`}
-                  /> */}
-                  <img src={project.image} alt={project.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                </div>
-                <div className="mt-4 flex flex-wrap items-start justify-between gap-4 pointer-events-none">
-                  <h3 className="text-white text-lg sm:text-xl font-bold uppercase">
-                    {project.title}
-                  </h3>
+                <div className="relative w-full aspect-4/3 rounded-xl overflow-hidden pointer-events-none">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      loading="lazy"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <ProjectBadge kind={project.kind} className="absolute top-3 left-3" />
+                  </div>
+                  <div className="mt-4 flex flex-wrap items-start justify-between gap-4 pointer-events-none">
+                    <h3 className="text-white text-lg sm:text-xl font-bold uppercase">
+                      {project.title}
+                    </h3>
                   <div className="flex flex-col items-end shrink-0">
                     {project.tags.map((tag, i2) => (
                       <span
@@ -126,7 +135,7 @@ export default function PortfolioCarousel() {
           onClick={() => goToIndex(index - 1)}
           disabled={index === 0}
           aria-label="Previous"
-          className="absolute left-2 sm:left-4 top-[42%] -translate-y-1/2 z-20 md:flex items-center justify-center rounded-full bg-black/50 backdrop-blur-sm border border-white/20 text-white w-11 h-11 sm:w-12 sm:h-12 hover:bg-white hover:text-black transition-colors disabled:opacity-30 disabled:hover:bg-black/50 disabled:hover:text-white hidden "
+          className="absolute left-2 sm:left-4 top-[42%] -translate-y-1/2 z-20 hidden md:flex items-center justify-center rounded-full bg-black/50 backdrop-blur-sm border border-white/20 text-white w-11 h-11 sm:w-12 sm:h-12 hover:bg-white hover:text-black transition-colors disabled:opacity-30 disabled:hover:bg-black/50 disabled:hover:text-white"
         >
           <ArrowLeft size={18} />
         </button>
@@ -134,34 +143,26 @@ export default function PortfolioCarousel() {
           onClick={() => goToIndex(index + 1)}
           disabled={index === maxIndex}
           aria-label="Next"
-          className="absolute right-2 sm:right-4 top-[42%] -translate-y-1/2 z-20  hidden md:flex items-center justify-center rounded-full bg-black/50 backdrop-blur-sm border border-white/20 text-white w-11 h-11 sm:w-12 sm:h-12 hover:bg-white hover:text-black transition-colors disabled:opacity-30 disabled:hover:bg-black/50 disabled:hover:text-white"
+          className="absolute right-2 sm:right-4 top-[42%] -translate-y-1/2 z-20 hidden md:flex items-center justify-center rounded-full bg-black/50 backdrop-blur-sm border border-white/20 text-white w-11 h-11 sm:w-12 sm:h-12 hover:bg-white hover:text-black transition-colors disabled:opacity-30 disabled:hover:bg-black/50 disabled:hover:text-white"
         >
           <ArrowRight size={18} />
         </button>
       </div>
 
       <div className="group flex items-center mt-10 sm:mt-14 cursor-pointer w-max">
-        <Link
-          to="/portfolio"          
-        >
+        <Link to="/portfolio">
           <div className="group flex mx-auto cursor-pointer mt-9 items-center h-15 px-3 py-10 rounded-4xl bg-white group-hover:bg-gray-500 text-black group-hover:text-white">
-                  <button className="py-2 flex items-center justify-center rounded-4xl text-3xl transition-all duration-600 ease-in-out w-0 px-0 opacity-0 ml-0 h-14 group-hover:w-14 group-hover:px-3 group-hover:opacity-100 group-hover:mr-1  overflow-hidden">
-                    <ArrowRight size={52} />
-                  </button>
-                  <button className="justify-center px-3 py-4 rounded-4xl text-3xl   font-semibold transition-all duration-600 ">
-                    View Portfolio
-                  </button>
-                  <button className="flex items-center justify-center rounded-4xl text-3xl  font-bold transition-all duration-600 ease-in-out w-14 h-14 px-3 py-2 opacity-100 ml-0 group-hover:w-0 group-hover:px-0 group-hover:opacity-0 group-hover:mr-0  overflow-hidden">
-                    <ArrowLeft size={52} />
-                  </button>
-            </div>
+            <button className="py-2 flex items-center justify-center rounded-4xl text-3xl transition-all duration-600 ease-in-out w-0 px-0 opacity-0 ml-0 h-14 group-hover:w-14 group-hover:px-3 group-hover:opacity-100 group-hover:mr-1 overflow-hidden">
+              <ArrowRight size={52} />
+            </button>
+            <button className="justify-center px-3 py-4 rounded-4xl text-3xl font-semibold transition-all duration-600">
+              View Portfolio
+            </button>
+            <button className="flex items-center justify-center rounded-4xl text-3xl font-bold transition-all duration-600 ease-in-out w-14 h-14 px-3 py-2 opacity-100 ml-0 group-hover:w-0 group-hover:px-0 group-hover:opacity-0 group-hover:mr-0 overflow-hidden">
+              <ArrowLeft size={52} />
+            </button>
+          </div>
         </Link>
-        {/* <Link
-          to="/portfolio"
-          className="flex items-center justify-center rounded-full bg-white text-black w-10 h-10 sm:w-14 sm:h-14 ml-2 transition-colors group-hover:bg-gray-300"
-        >
-          <ArrowLeft size={52} />
-        </Link> */}
       </div>
     </section>
   );

@@ -1,4 +1,4 @@
-# ZenoTech: multi-division update
+# ZenoUnified Solutions: multi-division update
 
 ## Adding or editing a division
 Everything (nav, home cards, footer, portfolio filter, contact form, /divisions/:slug pages)

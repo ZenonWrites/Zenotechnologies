@@ -24,14 +24,14 @@ export default function AboutPage() {
     <div className="w-full overflow-hidden">
       {/* Intro */}
       <section className="px-5 sm:px-10 pt-16 sm:pt-24 pb-10">
-        <p className="text-white/40 text-sm sm:text-base tracking-wide uppercase">About ZenoTech</p>
+        <p className="text-white/40 text-sm sm:text-base tracking-wide uppercase">About ZenoUnified Solutions</p>
         <h1 className="text-white font-bold text-4xl sm:text-6xl md:text-8xl leading-none mt-4">
           ONE STUDIO.
           <br />
           FOUR SPECIALISTS.
         </h1>
         <p className="text-white/70 text-base sm:text-2xl max-w-3xl mt-8">
-          ZenoTech started as a software studio. Today it brings together specialists in software and AI,
+          ZenoUnified Solutions started as a software studio. Today it brings together specialists in software and AI,
           fabrication and construction, online interior design, and CAD drafting and project documentation,
           so you can get different kinds of work done through one team.
         </p>

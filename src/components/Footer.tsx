@@ -50,6 +50,9 @@ export default function Footer() {
             <a href="mailto:javed@zenotechnologies.in" className="text-white text-base sm:text-xl hover:underline break-all">
               javed@zenotechnologies.in
             </a>
+            <a href="mailto:javed@zenotechnologies.in" className="text-white text-base sm:text-xl hover:underline break-all">
+              saif@zenotechnologies.in
+            </a>
           </div>
 
           <button
@@ -79,7 +82,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <p className="text-white/30 text-xs mt-6 sm:mt-8">© {new Date().getFullYear()} ZenoTech. All rights reserved.</p>
+      <p className="text-white/30 text-xs mt-6 sm:mt-8">© {new Date().getFullYear()} ZenoUnified Solutions. All rights reserved.</p>
     </footer>
   );
 }
