@@ -1,3 +1,4 @@
+
 import webdev from "../components/assets/webdev.jpg";
 import crm from "../components/assets/CRM.jpg";
 import ecommerce from "../components/assets/ecommerce.jpeg";
@@ -5,6 +6,11 @@ import landing from "../components/assets/landing.jpg";
 import redesign from "../components/assets/redesign.jpeg";
 import application from "../components/assets/application.jpeg";
 import seo from "../components/assets/seo.jpeg";
+import ai from "../components/assets/ai.jpg"
+import instrumentation from "../components/assets/instrumentations.jpg"
+import plant from "../components/assets/plant.jpg"
+import reliability from "../components/assets/reliability.jpg"
+import safety from "../components/assets/safety.jpg"
 
 export interface ServiceGroup {
   id: string;
@@ -60,6 +66,7 @@ export const divisions: Division[] = [
         id: "02",
         title: "SaaS & AI solutions",
         items: ["SaaS Product Development", "AI Chatbots & Assistants", "LLM Integrations", "Workflow Automation", "Data Pipelines & Dashboards", "API Development"],
+        image: ai ,
       },
       {
         id: "03",
@@ -150,34 +157,34 @@ export const divisions: Division[] = [
       },
     ],
   },
-  {
-    id: "drafting",
-    slug: "drafting",
-    name: "Drafting & Project Documentation",
-    short: "CAD drawings, drawing reviews and complete project documentation.",
-    tagline: "DRAW. REVIEW. DOCUMENT.",
-    description:
-      "Accurate CAD drafting and careful review of project drawings and documents, so your project goes to site, approval or tender with fewer errors.",
-    highlights: ["CAD drafting", "Drawing & project review", "Document sets"],
-    delivery: "Delivered remotely",
-    services: [
-      {
-        id: "01",
-        title: "CAD drafting",
-        items: ["2D Drawings in AutoCAD", "Floor Plans & Sections", "Detail Drawings", "As-Built Drawings", "Sketch-to-CAD Conversion", "Layout Drawings"],
-      },
-      {
-        id: "02",
-        title: "Project review",
-        items: ["Drawing Review", "Coordination Checks", "Specification Review", "Revision Tracking"],
-      },
-      {
-        id: "03",
-        title: "Documentation",
-        items: ["Drawing Sets for Approval", "Tender Documents", "Bill of Quantities Support", "Project Reports", "Document Control"],
-      },
-    ],
-  },
+  // {
+  //   id: "drafting",
+  //   slug: "drafting",
+  //   name: "Drafting & Project Documentation",
+  //   short: "CAD drawings, drawing reviews and complete project documentation.",
+  //   tagline: "DRAW. REVIEW. DOCUMENT.",
+  //   description:
+  //     "Accurate CAD drafting and careful review of project drawings and documents, so your project goes to site, approval or tender with fewer errors.",
+  //   highlights: ["CAD drafting", "Drawing & project review", "Document sets"],
+  //   delivery: "Delivered remotely",
+  //   services: [
+  //     {
+  //       id: "01",
+  //       title: "CAD drafting",
+  //       items: ["2D Drawings in AutoCAD", "Floor Plans & Sections", "Detail Drawings", "As-Built Drawings", "Sketch-to-CAD Conversion", "Layout Drawings"],
+  //     },
+  //     {
+  //       id: "02",
+  //       title: "Project review",
+  //       items: ["Drawing Review", "Coordination Checks", "Specification Review", "Revision Tracking"],
+  //     },
+  //     {
+  //       id: "03",
+  //       title: "Documentation",
+  //       items: ["Drawing Sets for Approval", "Tender Documents", "Bill of Quantities Support", "Project Reports", "Document Control"],
+  //     },
+  //   ],
+  // },
   {
   id: "instrumentation",
   slug: "instrumentation",
@@ -200,6 +207,7 @@ export const divisions: Division[] = [
         "DCS / ESD Graphics & Interlock Programming",
         "Control System Upgrades & Migrations",
       ],
+      image: instrumentation ,
     },
     {
       id: "02",
@@ -212,6 +220,7 @@ export const divisions: Division[] = [
         "Spare Parts & Inventory Management",
         "SAP PM Setup & Data Cleansing",
       ],
+      image: reliability , 
     },
     {
       id: "03",
@@ -224,6 +233,7 @@ export const divisions: Division[] = [
         "Turnaround & Shutdown Planning",
         "Brownfield & Greenfield Projects",
       ],
+      image: plant ,
     },
     {
       id: "04",
@@ -236,6 +246,7 @@ export const divisions: Division[] = [
         "Engineering Drawing Review",
         "Method Statements & Technical Training",
       ],
+      image: safety ,
     },
   ],
       expert: {
