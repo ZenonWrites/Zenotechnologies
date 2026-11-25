@@ -1,6 +1,7 @@
 import DivisionsSection from "../DivisionsSection";
 import HowItWorksSection from "../HowItWorksSection";
 import ClosingCTASection from "../ClosingCTASection";
+import TestimonialsSection from "../TestimonialsSection";
 
 export default function DivisionsPage() {
   return (

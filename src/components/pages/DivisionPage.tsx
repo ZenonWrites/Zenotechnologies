@@ -6,6 +6,7 @@ import PillButton from "../PillButton";
 import ServicesSection from "../ServicesSection";
 import TechnologiesSection from "../TechnologiesSection";
 import ClosingCTASection from "../ClosingCTASection";
+import TestimonialsSection from "../TestimonialsSection";
 
 export default function DivisionPage() {
   const { slug } = useParams();
@@ -83,7 +84,7 @@ export default function DivisionPage() {
           ))}
         </div>
       </section>
-
+      <TestimonialsSection division={division.id} />
       <ClosingCTASection />
     </div>
   );

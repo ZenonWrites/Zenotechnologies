@@ -4,6 +4,7 @@ import FAQSection from "../FAQSection";
 import Hero from "../Hero";
 import HowItWorksSection from "../HowItWorksSection";
 import PortfolioCarousel from "../Portfoliocarousel";
+import TestimonialsSection from "../TestimonialsSection";
 
 function HomePage() {
   return (
@@ -11,6 +12,7 @@ function HomePage() {
       <Hero />
       <DivisionsSection />
       <PortfolioCarousel />
+      <TestimonialsSection />
       <HowItWorksSection />
       <ClosingCTASection />
       <FAQSection />
