@@ -13,6 +13,13 @@ export interface ServiceGroup {
   image?: string;
 }
 
+export interface ExpertProfile {
+  summary: string;
+  credentials: string[];
+  tools: string[];
+  education: string[];
+}
+
 export interface Division {
   id: string;
   slug: string;
@@ -23,6 +30,7 @@ export interface Division {
   highlights: string[];
   delivery: string;
   services: ServiceGroup[];
+  expert?: ExpertProfile;
 }
 
 /**
@@ -170,6 +178,89 @@ export const divisions: Division[] = [
       },
     ],
   },
+  {
+  id: "instrumentation",
+  slug: "instrumentation",
+  name: "Instrumentation & Plant Engineering",
+  short: "Control systems, reliability and commissioning support for process plants.",
+  tagline: "COMMISSION. MAINTAIN. IMPROVE.",
+  description:
+    "Specialist engineering support for process and manufacturing plants: instrumentation and control systems, reliability and maintenance engineering, project and turnaround support, and engineering documentation.",
+  highlights: ["DCS, PLC & ESD systems", "Reliability & RCA", "Commissioning & turnaround"],
+  delivery: "Remote consulting and review; on-site support scoped per project",
+  services: [
+    {
+      id: "01",
+      title: "Instrumentation & control systems",
+      items: [
+        "DCS, PLC, ESD & SCADA Commissioning Support",
+        "Field Instrument Installation & Testing",
+        "HART, Foundation Fieldbus, Modbus & Profibus I/O",
+        "FAT & SAT Planning and Documentation",
+        "DCS / ESD Graphics & Interlock Programming",
+        "Control System Upgrades & Migrations",
+      ],
+    },
+    {
+      id: "02",
+      title: "Reliability & maintenance engineering",
+      items: [
+        "Root Cause Analysis (RCA) & Bad-Actor Studies",
+        "FMEA & RCM Analysis",
+        "MTBF Improvement / MTTR Reduction",
+        "Maintenance Strategy & Preventive Maintenance Plans",
+        "Spare Parts & Inventory Management",
+        "SAP PM Setup & Data Cleansing",
+      ],
+    },
+    {
+      id: "03",
+      title: "Projects & turnaround support",
+      items: [
+        "Commissioning Support",
+        "MOC Review & Execution",
+        "Scope of Work & Datasheet Preparation",
+        "Technical Bid Evaluation & Vendor Qualification",
+        "Turnaround & Shutdown Planning",
+        "Brownfield & Greenfield Projects",
+      ],
+    },
+    {
+      id: "04",
+      title: "Safety, audit & documentation",
+      items: [
+        "PHA / HAZOP Participation",
+        "Hazardous Area Classification Review",
+        "Risk Assessment & Job Safety Analysis",
+        "Internal & Supplier Audits",
+        "Engineering Drawing Review",
+        "Method Statements & Technical Training",
+      ],
+    },
+  ],
+      expert: {
+      summary:
+        "30+ years of hands-on experience in instrumentation, maintenance and project work across petrochemical and fertiliser plants in Saudi Arabia and India.",
+      credentials: [
+        "Instrumentation lead for a 1500 MTPD ammonia plant project",
+        "Led commissioning of methanol and ammonia facilities",
+        "Managed Honeywell Experion DCS and Safety Manager ESD implementations",
+        "Led turnaround and reliability improvement programmes",
+        "Contributor to SAP PM implementation and optimisation",
+      ],
+      tools: [
+        "Honeywell Experion DCS",
+        "Honeywell Safety Manager (ESD)",
+        "Siemens S7 PLCs & engineering tools",
+        "Allen-Bradley PLCs",
+        "SAP PM",
+      ],
+      education: [
+        "BS in Process Engineering, BITS Pilani",
+        "Diploma in Electronics Engineering, Government Polytechnic Kashipur",
+      ],
+    },
+},
 ];
 
 export const getDivision = (id: string) => divisions.find((d) => d.id === id);

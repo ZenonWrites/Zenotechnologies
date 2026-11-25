@@ -34,7 +34,28 @@ export default function DivisionPage() {
       <ServicesSection services={division.services} divisionId={division.id} />
 
       {division.id === "software" && <TechnologiesSection />}
-
+      {division.expert && (
+          <section className="px-5 sm:px-10 py-12 sm:py-20 border-t border-white/10">
+            <h2 className="text-white text-3xl sm:text-5xl font-bold mb-6">THE EXPERT BEHIND THIS DIVISION</h2>
+            <p className="text-white/70 text-base sm:text-xl max-w-3xl">{division.expert.summary}</p>
+            <div className="grid md:grid-cols-3 gap-8 mt-10">
+              {[
+                ["Career highlights", division.expert.credentials],
+                ["Systems & tools", division.expert.tools],
+                ["Education", division.expert.education],
+              ].map(([title, list]) => (
+                <div key={title as string}>
+                  <h3 className="text-white/50 text-sm uppercase tracking-wide mb-4">{title as string}</h3>
+                  <ul className="space-y-3">
+                    {(list as string[]).map((item) => (
+                      <li key={item} className="text-white/80 text-sm sm:text-base">{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
       <section className="px-5 sm:px-10 py-12 sm:py-20">
         <h2 className="text-white text-3xl sm:text-5xl font-bold mb-8">WORK</h2>
         {work.length > 0 ? (

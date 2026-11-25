@@ -15,7 +15,7 @@ export default function DivisionsSection() {
           <Link
             key={d.id}
             to={`/divisions/${d.slug}`}
-            className="group flex flex-col justify-between min-h-[260px] sm:min-h-[340px] rounded-2xl border border-white/10 bg-white/4 p-6 sm:p-10 transition-colors hover:bg-white/8"
+            className="group flex flex-col justify-between min-h-[260px] sm:min-h-[340px] rounded-2xl border border-white/10 bg-white/4 p-6 sm:p-10 transition-colors hover:bg-white/8 md:[&:last-child:nth-child(odd)]:col-span-2"
           >
             <div className="flex items-start justify-between">
               <span className="text-white/40 text-base sm:text-xl">0{i + 1}</span>
